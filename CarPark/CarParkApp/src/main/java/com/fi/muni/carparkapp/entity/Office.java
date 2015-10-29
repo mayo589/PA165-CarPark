@@ -1,10 +1,14 @@
 package com.fi.muni.carparkapp.entity;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -26,15 +30,23 @@ public class Office {
     @Column(nullable=false)
     private String address;
     
-    @ManyToOne
-    private Reservation 
+    @OneToMany
+    @NotNull
+    private List<Reservation> reservations = new ArrayList<Reservation>();
     
     public Office(Long officeId) {
         this.id = officeId;
     }
     
     public Office() {
-        
+    }
+    
+    public List<Reservation> getReservations() {
+        return Collections.unmodifiableList(reservations);
+    }
+    
+    public void addReservation(Reservation r) {
+        reservations.add(r);
     }
 
     public void setName(String name) {
@@ -60,8 +72,9 @@ public class Office {
     @Override
     public int hashCode() {
         final int prime = 31;
-        int result;
-        result = prime + ((name == null) ? 0 : name.hashCode());
+        int result = 1;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((address == null) ? 0 : address.hashCode());
         return result;
     }
     
@@ -76,6 +89,11 @@ public class Office {
         Office other = (Office)obj;
         if (name == null) {
             if (other.getName() != null)
+                return false;
+        } else if (!name.equals(other.getName()))
+            return false;
+        if (address == null) {
+            if (other.getAddress() != null)
                 return false;
         } else if (!name.equals(other.getName()))
             return false;

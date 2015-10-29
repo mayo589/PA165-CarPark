@@ -11,6 +11,7 @@ public interface OfficeDao {
     public Office findById(Long id);
     public List<Office> findAll();
     public Office findByName(String name);
+    public Office findByAddress(String address);
     public void create(Office o);
     public void delete(Office o);
 }

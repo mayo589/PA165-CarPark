@@ -37,6 +37,16 @@ public class OfficeDaoImpl implements OfficeDao {
             return null;
         }
     }
+    
+    @Override
+    public Office findByAddress(String address) {
+        try {
+            return em.createQuery("select c from Office o where address = :address",
+                    Office.class).setParameter(":address", address).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 
     @Override
     public void create(Office o) {
