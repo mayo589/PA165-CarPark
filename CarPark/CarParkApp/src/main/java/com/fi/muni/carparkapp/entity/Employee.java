@@ -8,7 +8,7 @@ package com.fi.muni.carparkapp.entity;
 
 /**
  *
- * @author marek
+ * @author Marek Mihalech
  */
 public class Employee {
     

@@ -6,10 +6,13 @@
 
 package com.fi.muni.carparkapp.entity;
 
+import javax.persistence.Entity;
+
 /**
  *
- * @author marek
+ * @author Marek Mihalech
  */
+@Entity
 public class Car {
     
 }
