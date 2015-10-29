@@ -13,11 +13,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author marek
+ * @author Marek Mihalec
  */
-public class CarDaoTest {
+public class OfficeDaoTest {
     
-    public CarDaoTest() {
+    public OfficeDaoTest() {
     }
     
     @BeforeClass

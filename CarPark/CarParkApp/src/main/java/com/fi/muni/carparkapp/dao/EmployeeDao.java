@@ -6,10 +6,17 @@
 
 package com.fi.muni.carparkapp.dao;
 
+import com.fi.muni.carparkapp.entity.Employee;
+import java.util.List;
+
 /**
  *
- * @author marek
+ * @author Marek Mihalech
  */
 public interface EmployeeDao {
-    
+    public Employee findById(Long id);
+    public void create(Employee e);
+    public void delete(Employee e);
+    public List<Employee> findAll();
+    public void update(Employee e);
 }

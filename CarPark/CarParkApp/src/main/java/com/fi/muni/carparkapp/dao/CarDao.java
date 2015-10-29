@@ -6,10 +6,17 @@
 
 package com.fi.muni.carparkapp.dao;
 
+import com.fi.muni.carparkapp.entity.Car;
+import java.util.List;
+
 /**
  *
- * @author marek
+ * @author Marek Mihalech
  */
 public interface CarDao {
-    
+    public Car findById(Long id);
+    public void create(Car c);
+    public void delete(Car c);
+    public List<Car> findAll();
+    public void update(Car c);
 }
