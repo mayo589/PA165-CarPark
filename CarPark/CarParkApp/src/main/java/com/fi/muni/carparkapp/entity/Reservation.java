@@ -95,29 +95,21 @@ public class Reservation {
 		this.fromDate = fromDate;
 	}
 
-	/*public OrderState getState() {
-		return state;
-	}
-
-	public void setState(OrderState state) {
-		this.state = state;
-	}*/
-
 	public Long getId() {
 		return id;
 	}
 
-	/*@Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((created == null) ? 0 : created.hashCode());
-		result = prime * result + ((state == null) ? 0 : state.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((employee == null) ? 0 : employee.hashCode());
+		result = prime * result + ((car == null) ? 0 : car.hashCode());
+		result = prime * result + ((office == null) ? 0 : office.hashCode());
 		return result;
-	}*/
+	}
 
-	/*@Override
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -125,20 +117,20 @@ public class Reservation {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Order other = (Order) obj;
-		if (created == null) {
-			if (other.created != null)
+		Reservation other = (Reservation) obj;
+		if (employee == null) {
+			if (other.employee != null)
 				return false;
-		} else if (!created.equals(other.created))
+		} else if (!employee.equals(other.employee))
 			return false;
-		if (state != other.state)
+		if (car != other.car)
 			return false;
-		if (user == null) {
-			if (other.user != null)
+		if (office == null) {
+			if (other.office != null)
 				return false;
-		} else if (!user.equals(other.user))
+		} else if (!office.equals(other.office))
 			return false;
 		return true;
-	}*/
+	}
 }
 
