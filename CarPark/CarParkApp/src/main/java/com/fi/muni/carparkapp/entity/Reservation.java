@@ -59,6 +59,38 @@ public class Reservation {
         @NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date toDate;
+
+        public Car getCar() {
+            return car;
+        }
+
+        public void setCar(Car car) {
+            this.car = car;
+        }
+
+        public Office getOffice() {
+            return office;
+        }
+
+        public void setOffice(Office office) {
+            this.office = office;
+        }
+
+        public Date getToDate() {
+            return toDate;
+        }
+
+        public void setToDate(Date toDate) {
+            this.toDate = toDate;
+        }
+        
+        public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	
 	/*@Enumerated
 	@NotNull
@@ -69,15 +101,7 @@ public class Reservation {
 	}
 
 	public Reservation() {
-	}
-	
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+        }
 
 	/*public List<OrderItem> getOrderItems() {
 		return Collections.unmodifiableList(orderItems);
