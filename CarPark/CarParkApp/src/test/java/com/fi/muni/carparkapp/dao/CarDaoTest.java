@@ -29,7 +29,7 @@ public class CarDaoTest extends AbstractTestNGSpringContextTests {
         Car car1 = new Car();
         Car car2 = new Car();
         car1.setVin("fake");
-        car2.setVin("fake");
+        car2.setVin("fake2");
         
         carDao.create(car1);
         carDao.create(car2);
