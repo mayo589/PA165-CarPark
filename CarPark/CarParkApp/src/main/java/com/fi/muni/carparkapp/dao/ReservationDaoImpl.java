@@ -1,5 +1,8 @@
 package com.fi.muni.carparkapp.dao;
 
+import com.fi.muni.carparkapp.entity.Car;
+import com.fi.muni.carparkapp.entity.Employee;
+import com.fi.muni.carparkapp.entity.Office;
 import com.fi.muni.carparkapp.entity.Reservation;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -28,16 +31,10 @@ public class ReservationDaoImpl implements ReservationDao {
                 .getResultList();
     }
 
-    @Override
-    public Reservation findByName(String name) {
-        try {
-            return em.createQuery("select c from Office o where name = :name",
-                    Reservation.class).setParameter(":name", name).getSingleResult();
-        } catch (NoResultException nre) {
-            return null;
-        }
-    }
-
+    /**
+     *
+     * @param o
+     */
     @Override
     public void create(Reservation o) {
         em.persist(o);
@@ -46,6 +43,36 @@ public class ReservationDaoImpl implements ReservationDao {
     @Override
     public void delete(Reservation o) {
         em.remove(o);
+    }
+
+    @Override
+    public Reservation findByEmployee(Employee employee) {
+        try {
+            return em.createQuery("select c from Reservation o where employee = :employee",
+                    Reservation.class).setParameter(":employee", employee).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    @Override
+    public Reservation findByCar(Car car) {
+        try {
+            return em.createQuery("select c from Reservation o where car = :car",
+                    Reservation.class).setParameter(":car", car).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    @Override
+    public Reservation findByOffice(Office office) {
+        try {
+            return em.createQuery("select c from Reservation o where office = :office",
+                    Reservation.class).setParameter(":office", office).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
     }
     
 }
