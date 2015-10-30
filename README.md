@@ -7,9 +7,11 @@ Task: The project should emulate a real situation in a company. The company empl
 The project is developed in PA165 course on Faculty of Informatics at Masaryk University. 
 
 Authors:
-Jan Hellar
-Jan Starka
-Marek Mihalech
+* Jan Hellar
+* Jan Starka
+* Marek Mihalech
+
+UML Diagrams:
 
 ![alt tag](UseCaseDiagram.png)
 
