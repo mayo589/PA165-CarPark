@@ -27,7 +27,7 @@ public class ReservationDaoImpl implements ReservationDao {
 
     @Override
     public List<Reservation> findAll() {
-        return em.createQuery("select o from Office o", Reservation.class)
+        return em.createQuery("select o from Reservation o", Reservation.class)
                 .getResultList();
     }
 
@@ -48,8 +48,8 @@ public class ReservationDaoImpl implements ReservationDao {
     @Override
     public Reservation findByEmployee(Employee employee) {
         try {
-            return em.createQuery("select c from Reservation o where employee = :employee",
-                    Reservation.class).setParameter(":employee", employee).getSingleResult();
+            return em.createQuery("select o from Reservation o where employee = :employee",
+                    Reservation.class).setParameter("employee", employee).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         }
@@ -58,8 +58,8 @@ public class ReservationDaoImpl implements ReservationDao {
     @Override
     public Reservation findByCar(Car car) {
         try {
-            return em.createQuery("select c from Reservation o where car = :car",
-                    Reservation.class).setParameter(":car", car).getSingleResult();
+            return em.createQuery("select o from Reservation o where car = :car",
+                    Reservation.class).setParameter("car", car).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         }
@@ -68,8 +68,8 @@ public class ReservationDaoImpl implements ReservationDao {
     @Override
     public Reservation findByOffice(Office office) {
         try {
-            return em.createQuery("select c from Reservation o where office = :office",
-                    Reservation.class).setParameter(":office", office).getSingleResult();
+            return em.createQuery("select o from Reservation o where office = :office",
+                    Reservation.class).setParameter("office", office).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         }
