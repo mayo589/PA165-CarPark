@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  *
- * @author marek
+ * @author Marek Mihalech
  */
 @Configuration
 @EnableTransactionManagement

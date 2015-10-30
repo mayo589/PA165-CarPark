@@ -2,9 +2,14 @@
 PA165 project
 
 
-Cílem projektu je vytvořit rezervační systém automobilů pro firmu.
+Task: The project should emulate a real situation in a company. The company employees can apply for rental of a car. The rental is applied to a given date. Based on such application, the system will offer list of free cars and the system allows reservation of a car.
 
-Projekt je tvořen v rámci předmětu PA165 na Fakultě informatiky Masarykovy univerzity.
+The project is developed in PA165 course on Faculty of Informatics at Masaryk University. 
+
+Authors:
+Jan Hellar
+Jan Starka
+Marek Mihalech
 
 ![alt tag](UseCaseDiagram.png)
 
