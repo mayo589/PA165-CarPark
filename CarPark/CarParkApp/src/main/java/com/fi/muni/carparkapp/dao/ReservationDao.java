@@ -15,34 +15,34 @@ public interface ReservationDao {
     /**
      * Gets reservation by ID
      * @param id ID, for which is reservation to be found
-     * @return
+     * @return Reservation for given ID
      */
     public Reservation findById(Long id);
 
     /**
      * Gets all reservations
-     * @return
+     * @return List of all reservations
      */
     public List<Reservation> findAll();
 
     /**
      * Gets reservation by employee
      * @param employee employee, for whom is reservation to be found
-     * @return
+     * @return Reservation for given employee
      */
     public Reservation findByEmployee(Employee employee);
 
     /**
      * Gets reservation by car
      * @param car car, for which is reservation to be found
-     * @return
+     * @return Reservation for given car
      */
     public Reservation findByCar(Car car);
 
     /**
      * Get all reservations by office
      * @param office office, for which is reservation to be found
-     * @return
+     * @return Reservation for given office
      */
     public Reservation findByOffice(Office office);
 
