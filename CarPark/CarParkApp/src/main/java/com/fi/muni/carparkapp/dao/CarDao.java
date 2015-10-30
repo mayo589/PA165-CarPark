@@ -14,9 +14,35 @@ import java.util.List;
  * @author Marek Mihalech
  */
 public interface CarDao {
+
+    /**
+     * Returns car by id
+     * @param id id of car to be found
+     * @return Car object with specified id
+     */
     public Car findById(Long id);
+
+    /**
+     * Persists Car object
+     * @param c Car object to be persisted
+     */
     public void create(Car c);
+
+    /**
+     * Removes car object
+     * @param c Car to be removed
+     */
     public void delete(Car c);
+
+    /**
+     * Gets all cars 
+     * @return list of all cars
+     */
     public List<Car> findAll();
+
+    /**
+     * Updates car record
+     * @param c updated car record
+     */
     public void update(Car c);
 }

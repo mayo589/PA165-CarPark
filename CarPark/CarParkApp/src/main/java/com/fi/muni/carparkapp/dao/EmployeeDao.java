@@ -14,9 +14,35 @@ import java.util.List;
  * @author Marek Mihalech
  */
 public interface EmployeeDao {
+
+    /**
+     *Finds employee by id
+     * @param id employee id
+     * @return Employee object
+     */
     public Employee findById(Long id);
+
+    /**
+     * Persists employee
+     * @param e Employee object to persist
+     */
     public void create(Employee e);
+
+    /**
+     * Removes Employee object
+     * @param e Employee object to b removed
+     */
     public void delete(Employee e);
+
+    /**
+     * Returns all employee objects
+     * @return list of Employee objects
+     */
     public List<Employee> findAll();
+
+    /**
+     * Updates employee record
+     * @param e updated Employee object
+     */
     public void update(Employee e);
 }
