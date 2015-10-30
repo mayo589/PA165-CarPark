@@ -47,10 +47,6 @@ public class Reservation {
         @ManyToOne(optional=false)
 	@NotNull
 	private Office office;
-	
-	/*@OneToMany
-	@NotNull
-	private List<OrderItem> reservationItems = new ArrayList<OrderItem>();*/
 		
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -91,10 +87,6 @@ public class Reservation {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
-	/*@Enumerated
-	@NotNull
-	private OrderState state;*/
 
 	public Reservation(Long id) {
 		this.id=id;
@@ -102,14 +94,6 @@ public class Reservation {
 
 	public Reservation() {
         }
-
-	/*public List<OrderItem> getOrderItems() {
-		return Collections.unmodifiableList(orderItems);
-	}
-
-	public void addOrderItem(OrderItem p) {
-		orderItems.add(p);
-	}*/
 
 	public Date getFromDate() {
 		return fromDate;

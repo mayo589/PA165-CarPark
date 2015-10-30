@@ -21,21 +21,6 @@ public class ReservationDaoImpl implements ReservationDao {
     private EntityManager em;
 
     @Override
-    public Reservation findById(Long id) {
-        return em.find(Reservation.class, id);
-    }
-
-    @Override
-    public List<Reservation> findAll() {
-        return em.createQuery("select o from Reservation o", Reservation.class)
-                .getResultList();
-    }
-
-    /**
-     *
-     * @param o
-     */
-    @Override
     public void create(Reservation o) {
         em.persist(o);
     }
@@ -44,11 +29,27 @@ public class ReservationDaoImpl implements ReservationDao {
     public void delete(Reservation o) {
         em.remove(o);
     }
+    
+    @Override
+    public void update(Reservation o){
+        em.merge(o);
+    }
+    
+    @Override
+    public Reservation findById(Long id) {
+        return em.find(Reservation.class, id);
+    }
+
+    @Override
+    public List<Reservation> findAll() {
+        return em.createQuery("select r from Reservation r", Reservation.class)
+                .getResultList();
+    }
 
     @Override
     public Reservation findByEmployee(Employee employee) {
         try {
-            return em.createQuery("select o from Reservation o where employee = :employee",
+            return em.createQuery("select r from Reservation r where employee = :employee",
                     Reservation.class).setParameter("employee", employee).getSingleResult();
         } catch (NoResultException nre) {
             return null;
@@ -58,7 +59,7 @@ public class ReservationDaoImpl implements ReservationDao {
     @Override
     public Reservation findByCar(Car car) {
         try {
-            return em.createQuery("select o from Reservation o where car = :car",
+            return em.createQuery("select r from Reservation r where car = :car",
                     Reservation.class).setParameter("car", car).getSingleResult();
         } catch (NoResultException nre) {
             return null;
@@ -68,7 +69,7 @@ public class ReservationDaoImpl implements ReservationDao {
     @Override
     public Reservation findByOffice(Office office) {
         try {
-            return em.createQuery("select o from Reservation o where office = :office",
+            return em.createQuery("select r from Reservation r where office = :office",
                     Reservation.class).setParameter("office", office).getSingleResult();
         } catch (NoResultException nre) {
             return null;
