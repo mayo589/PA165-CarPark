@@ -31,8 +31,8 @@ public class OfficeDaoImpl implements OfficeDao {
     @Override
     public Office findByName(String name) {
         try {
-            return em.createQuery("select c from Office o where name = :name",
-                    Office.class).setParameter(":name", name).getSingleResult();
+            return em.createQuery("select o from Office o where name = :name",
+                    Office.class).setParameter("name", name).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         }
@@ -41,8 +41,8 @@ public class OfficeDaoImpl implements OfficeDao {
     @Override
     public Office findByAddress(String address) {
         try {
-            return em.createQuery("select c from Office o where address = :address",
-                    Office.class).setParameter(":address", address).getSingleResult();
+            return em.createQuery("select o from Office o where address = :address",
+                    Office.class).setParameter("address", address).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         }
