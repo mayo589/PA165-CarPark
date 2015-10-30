@@ -2,6 +2,10 @@
 PA165 project
 
 
-Cílem projektu je vytvoøit rezervaèní systém automobilù pro firmu.
+CÃ­lem projektu je vytvoÅ™it rezervaÄnÃ­ systÃ©m automobilÅ¯ pro firmu.
 
-Projekt je tvoøen v rámci pøedmìtu PA165 na Fakultì informatiky Masarykovy univerzity.
+Projekt je tvoÅ™en v rÃ¡mci pÅ™edmÄ›tu PA165 na FakultÄ› informatiky Masarykovy univerzity.
+
+![alt tag](UseCaseDiagram.png)
+
+![alt tag](ClassDiagram.png)
