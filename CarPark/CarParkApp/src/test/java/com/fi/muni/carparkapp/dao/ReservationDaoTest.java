@@ -33,7 +33,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Marek Mihalech
+ * @author Marek Mihalech (410083)
  */
 @ContextConfiguration(classes=JpaTestContext.class)
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
