@@ -36,6 +36,14 @@ public class Car {
     
     private int fuelCapacity;
 
+    public Car(){
+        
+    }
+    
+    public Car(Long id){
+        this.id = id;
+    }
+    
     public Long getId() {
         return id;
     }
