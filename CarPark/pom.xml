@@ -7,6 +7,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>CarParkApp</module>
+        <module>CarParkService</module>
+        <module>CarParkApi</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
