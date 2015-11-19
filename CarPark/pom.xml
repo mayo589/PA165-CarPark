@@ -6,9 +6,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>CarParkApp</module>
+        
         <module>CarParkService</module>
         <module>CarParkApi</module>
+        <module>CarParkPersistence</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
