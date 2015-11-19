@@ -1,0 +1,29 @@
+ReservationFacade
+  getAllReservationsForEmloyee
+  getAllReservationsForCar
+  getAllReservationsForOffice
+  getReservationsForDateRange
+  AddReservation
+  CancelReservation
+  GetReservationById
+
+CarFacade
+  AddCar
+  DeleteCar
+  SetCarAvailability
+  GetAllCars
+  GetAllAvailableCars
+  UpdateCar
+  GetCarByVin
+  GetCarById
+
+OfficeFacade
+  GetAllOffices
+  AddOffice
+  GetOfficeById
+
+EmployeeFacade
+  Add
+  Remove
+  GetUserByID
+  
