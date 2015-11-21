@@ -41,7 +41,10 @@ public class Employee {
     private String address;
     
     private String telephone;
-
+    
+    private String passwordHash;
+    
+    private boolean admin;
     
     public Employee(){
         
@@ -93,6 +96,26 @@ public class Employee {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.fi.muni.carparkapp.service;
 
 import com.fi.muni.carparkapp.dao.EmployeeDao;
 import com.fi.muni.carparkapp.entity.Employee;
-import java.util.Collection;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void addEmployee(Employee employee, String unencryptedPassword) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        employee.setPasswordHash(createHash(unencryptedPassword));
     }
 
     @Override
@@ -34,12 +33,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean authenticate(Employee employee, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return validatePassword(password, employee.getPasswordHash());
     }
 
     @Override
     public boolean isAdmin(Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return findEmployeeById(employee.getId()).isAdmin();
+    }
+    
+    private static String createHash(String password) {
+        return password;
+    }
+    
+    private static boolean validatePassword(String password, String correctHash) {
+        return (password == null ? correctHash == null : password.equals(correctHash));
     }
     
 }
