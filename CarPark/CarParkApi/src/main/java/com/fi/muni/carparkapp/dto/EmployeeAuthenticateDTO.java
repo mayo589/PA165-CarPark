@@ -2,7 +2,7 @@ package com.fi.muni.carparkapp.dto;
 
 /**
  *
- * @author jen
+ * @author Jan Hellar
  */
 public class EmployeeAuthenticateDTO {
     

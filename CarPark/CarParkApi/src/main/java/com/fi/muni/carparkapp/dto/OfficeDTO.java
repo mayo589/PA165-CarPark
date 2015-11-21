@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  *
- * @author jen
+ * @author Jan Hellar
  */
 public class OfficeDTO {
     

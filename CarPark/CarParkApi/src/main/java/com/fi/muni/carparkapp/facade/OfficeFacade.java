@@ -5,7 +5,7 @@ import java.util.Collection;
 
 /**
  *
- * @author jen
+ * @author Jan Hellar
  */
 public interface OfficeFacade {
     

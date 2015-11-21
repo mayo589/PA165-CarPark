@@ -12,3 +12,5 @@
 hs_err_pid*
 /CarPark/CarParkApp/target/
 /CarPark/CarParkPersistence/target/
+/CarPark/CarParkService/target/
+/CarPark/CarParkApi/target/
