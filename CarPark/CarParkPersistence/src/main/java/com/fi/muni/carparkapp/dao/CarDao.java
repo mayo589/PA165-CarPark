@@ -21,6 +21,13 @@ public interface CarDao {
      * @return Car object with specified id
      */
     public Car findById(Long id);
+    
+     /**
+     * Returns car by vin
+     * @param vin vin of car to be found
+     * @return Car object with specified vin
+     */
+    public Car findByVin(String vin);
 
     /**
      * Persists Car object

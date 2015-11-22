@@ -28,6 +28,13 @@ public class CarDaoImpl implements CarDao{
     }
     
     @Override
+    public Car findByVin(String vin) {
+        List<Car> resultList = em.createQuery("SELECT c FROM Car c where c.vin = :vin", Car.class)
+                .setParameter("vin", vin).getResultList();
+        return resultList.get(0);
+    }
+    
+    @Override
     public void create(Car c) {
         em.persist(c);
     }
