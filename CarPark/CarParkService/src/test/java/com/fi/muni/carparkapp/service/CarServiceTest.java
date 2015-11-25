@@ -7,7 +7,9 @@ import com.fi.muni.carparkapp.service.config.ServiceConfiguration;
 import javax.inject.Inject;
 import org.hibernate.service.spi.ServiceException;
 import org.mockito.InjectMocks;
+import static org.mockito.Matchers.any;
 import org.mockito.Mock;
+import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -46,7 +48,7 @@ public class CarServiceTest extends AbstractTransactionalTestNGSpringContextTest
     
     @BeforeMethod
     public void prepareTestCar() {
-        testCar = new Car();
+        testCar = new Car(1L);
         testCar.setVin("1");
         testCar.setModel("a");
         testCar.setPlateNumber("2");
@@ -56,8 +58,22 @@ public class CarServiceTest extends AbstractTransactionalTestNGSpringContextTest
     
     @Test
     public void createAndFindByIdTest() {
-//        carService.create(testCar);
-//        Assert.assertEquals(carService.findById(testCar.getId()), testCar);
+        carService.create(testCar);
+        Long id = testCar.getId();
+        
+        when(carDao.findById(any())).thenReturn(testCar);
+        
+        Car c = carService.findById(id);
+//        Car c = carService.findByVin("1");
+        Assert.assertNotNull(id);
+        Assert.assertNotNull(testCar);
+        Assert.assertNotNull(c);
+        Assert.assertEquals(c, testCar);
+    }
+    
+    @Test
+    public void findAllAvailableTest() {
+        
     }
     
 }
