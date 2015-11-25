@@ -126,8 +126,8 @@ public class ReservationDaoTest extends AbstractTestNGSpringContextTests{
         res1.setOffice(office1);
         reservationDao.create(res1);
         
-        Reservation found = reservationDao.findByEmployee(res1.getEmployee());
-        Assert.isTrue(found.getFromDate().equals(java.sql.Date.valueOf("2000-11-01")));
+        List<Reservation> foundReservations = reservationDao.findByEmployee(res1.getEmployee());
+        Assert.isTrue(foundReservations.get(0).getFromDate().equals(java.sql.Date.valueOf("2000-11-01")));
     }
     
     @Test
@@ -140,8 +140,8 @@ public class ReservationDaoTest extends AbstractTestNGSpringContextTests{
         res1.setOffice(office1);
         reservationDao.create(res1);
         
-        Reservation found = reservationDao.findByCar(res1.getCar());
-        Assert.isTrue(found.getFromDate().equals(java.sql.Date.valueOf("2000-11-01")));
+        List<Reservation> foundReservations = reservationDao.findByCar(res1.getCar());
+        Assert.isTrue(foundReservations.get(0).getFromDate().equals(java.sql.Date.valueOf("2000-11-01")));
     }
     
     @Test
@@ -154,8 +154,8 @@ public class ReservationDaoTest extends AbstractTestNGSpringContextTests{
         res1.setOffice(office1);
         reservationDao.create(res1);
         
-        Reservation found = reservationDao.findByOffice(res1.getOffice());
-        Assert.isTrue(found.getFromDate().equals(java.sql.Date.valueOf("2000-11-01")));
+        List<Reservation> foundReservations = reservationDao.findByOffice(res1.getOffice());
+        Assert.isTrue(foundReservations.get(0).getFromDate().equals(java.sql.Date.valueOf("2000-11-01")));
     }
     
     @Test
