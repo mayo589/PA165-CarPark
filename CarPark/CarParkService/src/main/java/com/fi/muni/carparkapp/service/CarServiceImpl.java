@@ -13,11 +13,13 @@ import com.fi.muni.carparkapp.entity.Reservation;
 import java.util.Date;
 import java.util.List;
 import org.dozer.inject.Inject;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Marek Mihalech
  */
+@Service
 public class CarServiceImpl implements CarService{
 
     @Inject 

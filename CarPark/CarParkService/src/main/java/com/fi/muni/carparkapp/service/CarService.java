@@ -8,11 +8,13 @@ package com.fi.muni.carparkapp.service;
 
 import com.fi.muni.carparkapp.entity.Car;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Marek Mihalech (410083)
  */
+@Service
 public interface CarService {
     
     public void create(Car c);
