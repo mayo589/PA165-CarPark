@@ -3,6 +3,7 @@ package com.fi.muni.carparkapp.service;
 import com.fi.muni.carparkapp.dao.CarDao;
 import com.fi.muni.carparkapp.dao.ReservationDao;
 import com.fi.muni.carparkapp.entity.Car;
+import com.fi.muni.carparkapp.entity.Reservation;
 import com.fi.muni.carparkapp.service.config.ServiceConfiguration;
 import javax.inject.Inject;
 import org.hibernate.service.spi.ServiceException;
@@ -73,6 +74,7 @@ public class CarServiceTest extends AbstractTransactionalTestNGSpringContextTest
     
     @Test
     public void findAllAvailableTest() {
+        Reservation r = new Reservation();
         
     }
     
