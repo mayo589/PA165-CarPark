@@ -4,6 +4,7 @@ import com.fi.muni.carparkapp.entity.Reservation;
 import com.fi.muni.carparkapp.entity.Car;
 import com.fi.muni.carparkapp.entity.Employee;
 import com.fi.muni.carparkapp.entity.Office;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,25 +27,33 @@ public interface ReservationDao {
     public List<Reservation> findAll();
 
     /**
-     * Gets reservation by employee
+     * Gets reservations by employee
      * @param employee employee, for whom is reservation to be found
-     * @return Reservation for given employee
+     * @return Reservations for given employee
      */
-    public Reservation findByEmployee(Employee employee);
+    public List<Reservation> findByEmployee(Employee employee);
 
     /**
-     * Gets reservation by car
+     * Gets reservations by car
      * @param car car, for which is reservation to be found
-     * @return Reservation for given car
+     * @return Reservations for given car
      */
-    public Reservation findByCar(Car car);
+    public List<Reservation> findByCar(Car car);
 
     /**
      * Get all reservations by office
      * @param office office, for which is reservation to be found
-     * @return Reservation for given office
+     * @return Reservations for given office
      */
-    public Reservation findByOffice(Office office);
+    public List<Reservation> findByOffice(Office office);
+    
+    /**
+     * Get all reservations in tange of two dates
+     * @param fromDate beginning date
+     * @param toDate ending date
+     * @return Reservations for given date range
+     */
+    public List<Reservation> findByDateRange(Date fromDate, Date toDate);
 
     /**
      * Persists Reservation object
