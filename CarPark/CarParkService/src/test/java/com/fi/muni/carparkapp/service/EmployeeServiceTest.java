@@ -1,7 +1,6 @@
 package com.fi.muni.carparkapp.service;
 
 import com.fi.muni.carparkapp.dao.EmployeeDao;
-import com.fi.muni.carparkapp.dao.ReservationDao;
 import com.fi.muni.carparkapp.entity.Employee;
 import com.fi.muni.carparkapp.entity.Reservation;
 import com.fi.muni.carparkapp.service.config.ServiceConfiguration;
@@ -36,9 +35,6 @@ public class EmployeeServiceTest extends AbstractTransactionalTestNGSpringContex
     @Mock
     private EmployeeDao employeeDao;
     
-    @Mock
-    private ReservationDao reservationDao;
-    
     @Autowired
     @InjectMocks
     private EmployeeService employeeService;
@@ -67,13 +63,13 @@ public class EmployeeServiceTest extends AbstractTransactionalTestNGSpringContex
     }
     
     @Test
-    public void createAndFindByIdTest() {
+    public void findEmployeeByIdTest() {
         employeeService.addEmployee(testEmployee, "heslo123");
         Long id = testEmployee.getId();
         
-        when(employeeDao.findById(any())).thenReturn(testEmployee);
+        when(employeeService.findEmployeeById(id)).thenReturn(testEmployee);
         
-        Employee e = employeeDao.findById(id);
+        Employee e = employeeService.findEmployeeById(id);
         Assert.assertNotNull(id);
         Assert.assertNotNull(testEmployee);
         Assert.assertNotNull(e);
@@ -81,9 +77,10 @@ public class EmployeeServiceTest extends AbstractTransactionalTestNGSpringContex
     }
     
     @Test
-    public void findAllAvailableTest() {
-        Reservation r = new Reservation();
-        
+    public void authenticateTest() {
+        employeeService.addEmployee(testEmployee, "heslo123");
+        boolean result = employeeService.authenticate(testEmployee, "heslo123");
+        Assert.assertEquals(result, true);
     }
     
 }
