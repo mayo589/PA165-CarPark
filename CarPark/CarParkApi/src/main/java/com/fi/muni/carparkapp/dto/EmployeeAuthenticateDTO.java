@@ -9,7 +9,7 @@ public class EmployeeAuthenticateDTO {
     private Long emloyeeId;
     private String password;
 
-    public Long getEmloyeeId() {
+    public Long getEmployeeId() {
         return emloyeeId;
     }
 
@@ -17,7 +17,7 @@ public class EmployeeAuthenticateDTO {
         return password;
     }
 
-    public void setEmloyeeId(Long emloyeeId) {
+    public void setEmployeeId(Long emloyeeId) {
         this.emloyeeId = emloyeeId;
     }
 

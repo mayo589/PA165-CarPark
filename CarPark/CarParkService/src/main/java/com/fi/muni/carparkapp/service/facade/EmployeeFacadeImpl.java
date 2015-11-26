@@ -46,7 +46,7 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
     @Override
     public boolean authenticate(EmployeeAuthenticateDTO employee) {
         return employeeService.authenticate(
-                employeeService.findEmployeeById(employee.getEmloyeeId()), 
+                employeeService.findEmployeeById(employee.getEmployeeId()), 
                 employee.getPassword());
     }
 
