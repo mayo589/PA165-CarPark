@@ -5,6 +5,10 @@ import com.fi.muni.carparkapp.dao.ReservationDao;
 import com.fi.muni.carparkapp.entity.Car;
 import com.fi.muni.carparkapp.entity.Reservation;
 import com.fi.muni.carparkapp.service.config.ServiceConfiguration;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.service.spi.ServiceException;
 import org.mockito.InjectMocks;
@@ -65,7 +69,6 @@ public class CarServiceTest extends AbstractTransactionalTestNGSpringContextTest
         when(carDao.findById(any())).thenReturn(testCar);
         
         Car c = carService.findById(id);
-//        Car c = carService.findByVin("1");
         Assert.assertNotNull(id);
         Assert.assertNotNull(testCar);
         Assert.assertNotNull(c);
@@ -73,9 +76,55 @@ public class CarServiceTest extends AbstractTransactionalTestNGSpringContextTest
     }
     
     @Test
+    public void findAllTest() {
+        List<Car> cars = new ArrayList<>();
+        cars.add(testCar);
+        
+        when(carDao.findAll()).thenReturn(cars);
+        
+        List<Car> f = carService.getAll();
+        Assert.assertNotNull(f);
+        Assert.assertEquals(f, cars);
+    }
+    
+    @Test
     public void findAllAvailableTest() {
         Reservation r = new Reservation();
+        r.setCar(testCar);
+        Calendar c = Calendar.getInstance(); 
+        c.setTime(new Date()); 
+        c.add(Calendar.DATE, -1);
+        Calendar c2 = Calendar.getInstance(); 
+        c2.setTime(new Date()); 
+        c2.add(Calendar.DATE, 1);
+        r.setFromDate(c.getTime());
+        r.setToDate(c2.getTime());
         
+        Car car1 = new Car();
+        
+        Car car2 = new Car();
+        Reservation r2 = new Reservation();
+        r2.setCar(car2);
+        r2.setToDate(c.getTime());
+        
+        List<Reservation> reservations = new ArrayList<>();
+        reservations.add(r);
+        reservations.add(r2);
+        
+        List<Car> cars = new ArrayList<>();
+        cars.add(testCar);
+        cars.add(car1);
+        cars.add(car2);
+        
+        List<Car> availableCars = new ArrayList<>();
+        availableCars.add(car1);
+        availableCars.add(car2);
+        
+        when(carDao.findAll()).thenReturn(cars);
+        when(reservationDao.findAll()).thenReturn(reservations);
+        
+        List<Car> f = carService.getAvailable();
+        Assert.assertEquals(f, availableCars);
     }
     
 }
