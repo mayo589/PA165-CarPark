@@ -4,6 +4,7 @@ import com.fi.muni.carparkapp.entity.Car;
 import com.fi.muni.carparkapp.entity.Employee;
 import com.fi.muni.carparkapp.entity.Office;
 import com.fi.muni.carparkapp.entity.Reservation;
+import com.fi.muni.carparkapp.exceptions.SimpleDataAccessException;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -26,7 +27,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public void create(Reservation o) {
         if (o == null)
         {
-            throw new DataAccessException("Reservation cannot be null.") {};
+            throw new SimpleDataAccessException("Reservation cannot be null.");
         }
         em.persist(o);
     }
@@ -35,7 +36,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public void delete(Reservation o) {
         if (o == null)
         {
-            throw new DataAccessException("Reservation cannot be null.") {};
+            throw new SimpleDataAccessException("Reservation cannot be null.") {};
         }
         em.remove(o);
     }
@@ -44,7 +45,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public void update(Reservation o) {
         if (o == null)
         {
-            throw new DataAccessException("Reservation cannot be null.") {};
+            throw new SimpleDataAccessException("Reservation cannot be null.") {};
         }
         em.merge(o);
     }
@@ -53,7 +54,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public Reservation findById(Long id) {
         if (id == null)
         {
-            throw new DataAccessException("Id cannot be null.") {};
+            throw new SimpleDataAccessException("Id cannot be null.") {};
         }
         return em.find(Reservation.class, id);
     }
@@ -68,7 +69,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public List<Reservation> findByEmployee(Employee employee) {
         if (employee == null)
         {
-            throw new DataAccessException("Employee cannot be null.") {};
+            throw new SimpleDataAccessException("Employee cannot be null.");
         }
         try {
             return em.createQuery("select r from Reservation r where employee = :employee",
@@ -82,7 +83,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public List<Reservation> findByCar(Car car) {
         if (car == null)
         {
-            throw new DataAccessException("Car cannot be null.") {};
+            throw new SimpleDataAccessException("Car cannot be null.");
         }
         try {
             return em.createQuery("select r from Reservation r where car = :car",
@@ -96,7 +97,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public List<Reservation> findByOffice(Office office) {
         if (office == null)
         {
-            throw new DataAccessException("Office cannot be null.") {};
+            throw new SimpleDataAccessException("Office cannot be null.");
         }
         try {
             return em.createQuery("select r from Reservation r where office = :office",
@@ -110,11 +111,11 @@ public class ReservationDaoImpl implements ReservationDao {
     public List<Reservation> findByDateRange(Date fromDate, Date toDate) {
         if (fromDate == null)
         {
-            throw new DataAccessException("FromDate cannot be null.") {};
+            throw new SimpleDataAccessException("FromDate cannot be null.");
         }
         if (toDate == null)
         {
-            throw new DataAccessException("ToDate cannot be null.") {};
+            throw new SimpleDataAccessException("ToDate cannot be null.");
         }
         try {
             return em.createQuery("select r from Reservation r where fromDate >= :fromDate AND toDate <= :toDate",
