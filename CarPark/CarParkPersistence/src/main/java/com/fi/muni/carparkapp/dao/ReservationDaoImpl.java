@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -23,21 +24,37 @@ public class ReservationDaoImpl implements ReservationDao {
 
     @Override
     public void create(Reservation o) {
+        if (o == null)
+        {
+            throw new DataAccessException("Reservation cannot be null.") {};
+        }
         em.persist(o);
     }
 
     @Override
     public void delete(Reservation o) {
+        if (o == null)
+        {
+            throw new DataAccessException("Reservation cannot be null.") {};
+        }
         em.remove(o);
     }
 
     @Override
     public void update(Reservation o) {
+        if (o == null)
+        {
+            throw new DataAccessException("Reservation cannot be null.") {};
+        }
         em.merge(o);
     }
 
     @Override
     public Reservation findById(Long id) {
+        if (id == null)
+        {
+            throw new DataAccessException("Id cannot be null.") {};
+        }
         return em.find(Reservation.class, id);
     }
 
@@ -49,16 +66,24 @@ public class ReservationDaoImpl implements ReservationDao {
 
     @Override
     public List<Reservation> findByEmployee(Employee employee) {
+        if (employee == null)
+        {
+            throw new DataAccessException("Employee cannot be null.") {};
+        }
         try {
             return em.createQuery("select r from Reservation r where employee = :employee",
                     Reservation.class).setParameter("employee", employee).getResultList();
-        } catch (NoResultException nre) {
+        } catch (DataAccessException nre) {
             return null;
         }
     }
 
     @Override
     public List<Reservation> findByCar(Car car) {
+        if (car == null)
+        {
+            throw new DataAccessException("Car cannot be null.") {};
+        }
         try {
             return em.createQuery("select r from Reservation r where car = :car",
                     Reservation.class).setParameter("car", car).getResultList();
@@ -69,6 +94,10 @@ public class ReservationDaoImpl implements ReservationDao {
 
     @Override
     public List<Reservation> findByOffice(Office office) {
+        if (office == null)
+        {
+            throw new DataAccessException("Office cannot be null.") {};
+        }
         try {
             return em.createQuery("select r from Reservation r where office = :office",
                     Reservation.class).setParameter("office", office).getResultList();
@@ -79,6 +108,14 @@ public class ReservationDaoImpl implements ReservationDao {
 
     @Override
     public List<Reservation> findByDateRange(Date fromDate, Date toDate) {
+        if (fromDate == null)
+        {
+            throw new DataAccessException("FromDate cannot be null.") {};
+        }
+        if (toDate == null)
+        {
+            throw new DataAccessException("ToDate cannot be null.") {};
+        }
         try {
             return em.createQuery("select r from Reservation r where fromDate >= :fromDate AND toDate <= :toDate",
                     Reservation.class)
