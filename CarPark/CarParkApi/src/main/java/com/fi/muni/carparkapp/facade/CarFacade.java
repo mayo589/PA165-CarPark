@@ -14,18 +14,48 @@ import com.fi.muni.carparkapp.dto.CarDTO;
  */
 public interface CarFacade {
     
-  public void addCar(CarDTO c);
+    /**
+     *Adding CarDTO c
+     * @param c
+     */
+    public void addCar(CarDTO c);
   
-  public void deleteCar(CarDTO c);
+    /**
+     *Deleting CarDTO c
+     * @param c
+     */
+    public void deleteCar(CarDTO c);
   
-  public List<CarDTO> getAllCars();
+    /**
+     *Getting all cars
+     * @return all cars
+     */
+    public List<CarDTO> getAllCars();
   
-  public List<CarDTO> getAllAvailableCars();
+    /**
+     *Getting available cars
+     * @return available cars
+     */
+    public List<CarDTO> getAllAvailableCars();
   
-  public void updateCar(CarDTO c);
+    /**
+     *Updating car
+     * @param c car to update
+     */
+    public void updateCar(CarDTO c);
   
-  public CarDTO getCarByVin(String vin);
+    /**
+     *Getting car by vin
+     * @param vin of the car
+     * @return
+     */
+    public CarDTO getCarByVin(String vin);
   
-  public CarDTO getCarById(Long id);
+    /**
+     *Getting car by id
+     * @param id of car
+     * @return
+     */
+    public CarDTO getCarById(Long id);
     
 }
