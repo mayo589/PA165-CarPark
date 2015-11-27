@@ -13,17 +13,21 @@ import com.fi.muni.carparkapp.service.BeanMappingService;
 import com.fi.muni.carparkapp.service.CarService;
 import java.util.List;
 import org.dozer.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Marek Mihalech 410083
  */
+@Service
 public class CarFacadeImpl implements CarFacade{
 
-    @Inject
+    @Autowired
     private CarService carService;
     
-    @Inject
+    @Autowired
     private BeanMappingService beanMappingService;
     
     @Override
