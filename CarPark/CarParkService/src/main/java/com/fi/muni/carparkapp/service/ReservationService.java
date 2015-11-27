@@ -15,6 +15,11 @@ import java.util.Date;
 @Service
 public interface ReservationService {
     
+    /**
+     * Gets all reservations for employee
+     * @param employee
+     * @return list of reservations for given employee
+     */
     List<Reservation> getAllReservationsForEmloyee(Employee employee);
     List<Reservation> getAllReservationsForCar(Car car);
     List<Reservation> getAllReservationsForOffice(Office office);

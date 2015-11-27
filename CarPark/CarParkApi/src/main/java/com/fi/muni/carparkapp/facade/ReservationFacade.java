@@ -13,6 +13,11 @@ import java.util.Date;
  */
 public interface ReservationFacade {
     
+    /**
+     * Gets reservation by Id
+     * @param reservationId
+     * @return reservation for given id
+     */
     ReservationDTO getReservationById(Long reservationId);
     Collection<ReservationDTO> getAllReservationsForEmployee(EmployeeDTO employee);
     Collection<ReservationDTO> getAllReservationsForCar(CarDTO car);
