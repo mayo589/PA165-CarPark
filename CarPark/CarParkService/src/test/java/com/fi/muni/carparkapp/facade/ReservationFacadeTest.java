@@ -8,7 +8,6 @@ import com.fi.muni.carparkapp.entity.Car;
 import com.fi.muni.carparkapp.entity.Employee;
 import com.fi.muni.carparkapp.entity.Office;
 import com.fi.muni.carparkapp.entity.Reservation;
-import com.fi.muni.carparkapp.service.BeanMappingService;
 import com.fi.muni.carparkapp.service.ReservationService;
 import com.fi.muni.carparkapp.service.config.ServiceConfiguration;
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import javax.inject.Inject;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
@@ -39,9 +37,6 @@ public class ReservationFacadeTest extends AbstractTransactionalTestNGSpringCont
     
     @Mock
     private ReservationService reservationService;
-    
-    @Inject
-    private BeanMappingService beanMappingService;
     
     @Autowired
     @InjectMocks
