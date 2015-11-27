@@ -1,6 +1,7 @@
 package com.fi.muni.carparkapp.facade;
 
 import com.fi.muni.carparkapp.dto.EmployeeAuthenticateDTO;
+import com.fi.muni.carparkapp.dao.EmployeeDao;
 import com.fi.muni.carparkapp.dto.EmployeeDTO;
 import com.fi.muni.carparkapp.entity.Employee;
 import com.fi.muni.carparkapp.entity.Reservation;
@@ -96,6 +97,9 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
     
     @Test
     public void getAllEmployeesTest() {
+        List<EmployeeDTO> employeesDTO = new ArrayList<>();
+        employeesDTO.add(testEmployeeDTO);
+        
         List<Employee> employees = new ArrayList<>();
         employees.add(testEmployee);
         
@@ -103,7 +107,7 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
         
         Collection<EmployeeDTO> f = employeeFacade.getAllEmployees();
         Assert.assertNotNull(f);
-        Assert.assertEquals(f, employees);
+        Assert.assertEquals(f, employeesDTO);
     }
     
     @Test
