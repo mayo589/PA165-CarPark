@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.service.spi.ServiceException;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,9 @@ import org.testng.annotations.Test;
 @ContextConfiguration(classes = ServiceConfiguration.class)
 public class OfficeServiceTest extends AbstractTransactionalTestNGSpringContextTests {
     
-    @Autowired
-    @InjectMocks
+    /*@Autowired
+    @InjectMocks*/
+    @Mock
     private OfficeService officeService;
     
     private Office testOffice;
@@ -36,7 +38,7 @@ public class OfficeServiceTest extends AbstractTransactionalTestNGSpringContextT
     
     @BeforeMethod
     public void prepareTestOffice() {
-        testOffice = new Office();
+        testOffice = new Office(1L);
         testOffice.setName("name1");
         testOffice.setAddress("address1");
     }
