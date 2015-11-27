@@ -1,6 +1,7 @@
 package com.fi.muni.carparkapp.dto;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -30,6 +31,42 @@ public class ReservationDTO {
 
     public EmployeeDTO getEmployee() {
         return employee;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ReservationDTO other = (ReservationDTO) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.employee, other.employee)) {
+            return false;
+        }
+        if (!Objects.equals(this.car, other.car)) {
+            return false;
+        }
+        if (!Objects.equals(this.office, other.office)) {
+            return false;
+        }
+        if (!Objects.equals(this.fromDate, other.fromDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.toDate, other.toDate)) {
+            return false;
+        }
+        return true;
     }
 
     public void setEmployee(EmployeeDTO employee) {
