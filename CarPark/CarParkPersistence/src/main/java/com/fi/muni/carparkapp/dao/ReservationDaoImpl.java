@@ -36,7 +36,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public void delete(Reservation o) {
         if (o == null)
         {
-            throw new SimpleDataAccessException("Reservation cannot be null.") {};
+            throw new SimpleDataAccessException("Reservation cannot be null.");
         }
         em.remove(o);
     }
@@ -45,7 +45,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public void update(Reservation o) {
         if (o == null)
         {
-            throw new SimpleDataAccessException("Reservation cannot be null.") {};
+            throw new SimpleDataAccessException("Reservation cannot be null.");
         }
         em.merge(o);
     }
@@ -54,7 +54,7 @@ public class ReservationDaoImpl implements ReservationDao {
     public Reservation findById(Long id) {
         if (id == null)
         {
-            throw new SimpleDataAccessException("Id cannot be null.") {};
+            throw new SimpleDataAccessException("Id cannot be null.");
         }
         return em.find(Reservation.class, id);
     }
