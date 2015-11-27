@@ -79,6 +79,7 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
         
         testEmployeeAuthenticate = new EmployeeAuthenticateDTO();
         testEmployeeAuthenticate.setEmployeeId(testEmployeeDTO.getId());
+        //testEmployeeAuthenticate.setPassword("heslo123");
     }
     
     @Test
@@ -113,10 +114,23 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
     @Test
     public void authenticateTest() {
         testEmployeeAuthenticate.setPassword("heslo123");
+        testEmployeeAuthenticate.setEmployeeId(testEmployee.getId());
+        
+        when(employeeService.findEmployeeById(testEmployeeAuthenticate.getEmployeeId())).thenReturn(testEmployee);
+        when(employeeService.authenticate(testEmployee, "heslo123")).thenReturn(Boolean.TRUE);
+        when(employeeService.authenticate(testEmployee, "spatneheslo")).thenReturn(Boolean.FALSE);
+        
         boolean result = employeeFacade.authenticate(testEmployeeAuthenticate);
         
         Assert.assertNotNull(result);
         Assert.assertEquals(result, true);
+        
+        testEmployeeAuthenticate.setPassword("spatneheslo");
+        
+        boolean badResult = employeeFacade.authenticate(testEmployeeAuthenticate);
+        
+        Assert.assertNotNull(badResult);
+        Assert.assertEquals(badResult, false);
     }
     
     @Test
