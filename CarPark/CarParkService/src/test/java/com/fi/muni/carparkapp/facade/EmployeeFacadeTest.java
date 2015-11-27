@@ -2,8 +2,9 @@ package com.fi.muni.carparkapp.facade;
 
 import com.fi.muni.carparkapp.dto.EmployeeAuthenticateDTO;
 import com.fi.muni.carparkapp.dto.EmployeeDTO;
-import com.fi.muni.carparkapp.entity.Car;
+import com.fi.muni.carparkapp.entity.Employee;
 import com.fi.muni.carparkapp.entity.Reservation;
+import com.fi.muni.carparkapp.service.BeanMappingService;
 import com.fi.muni.carparkapp.service.EmployeeService;
 import com.fi.muni.carparkapp.service.config.ServiceConfiguration;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.GregorianCalendar;
+import javax.inject.Inject;
 import org.hibernate.service.spi.ServiceException;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -35,12 +37,15 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
     @Mock
     private EmployeeService employeeService;
     
-    /*@Autowired
-    @InjectMocks*/
-    @Mock
+    @Inject
+    private BeanMappingService beanMappingService;
+    
+    @Autowired
+    @InjectMocks
     private EmployeeFacade employeeFacade;
     
-    private EmployeeDTO testEmployee;
+    private EmployeeDTO testEmployeeDTO;
+    private Employee testEmployee;
     private EmployeeAuthenticateDTO testEmployeeAuthenticate;
     
     Calendar c1 = GregorianCalendar.getInstance();
@@ -55,7 +60,15 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
     public void prepareTestEmployee() {
         c1.set(1962, 1, 30);  //January 30th 2000
         sDate = c1.getTime();
-        testEmployee = new EmployeeDTO();
+        testEmployeeDTO = new EmployeeDTO();
+        testEmployeeDTO.setId(1L);
+        testEmployeeDTO.setAddress("Boženy Němcové");
+        testEmployeeDTO.setFirstName("Jaroslav");
+        testEmployeeDTO.setLastName("Novák");
+        testEmployeeDTO.setDateOfBirth(sDate);
+        testEmployeeDTO.setTelephone("999000000");
+        
+        testEmployee = new Employee();
         testEmployee.setId(1L);
         testEmployee.setAddress("Boženy Němcové");
         testEmployee.setFirstName("Jaroslav");
@@ -64,29 +77,29 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
         testEmployee.setTelephone("999000000");
         
         testEmployeeAuthenticate = new EmployeeAuthenticateDTO();
-        testEmployeeAuthenticate.setEmployeeId(testEmployee.getId());
+        testEmployeeAuthenticate.setEmployeeId(testEmployeeDTO.getId());
     }
     
     @Test
     public void findEmployeeByIdTest() {
-        employeeFacade.addEmployee(testEmployee, "heslo123");
-        Long id = testEmployee.getId();
+        employeeFacade.addEmployee(testEmployeeDTO, "heslo123");
+        Long id = testEmployeeDTO.getId();
         
-        when(employeeFacade.findEmployeeById(id)).thenReturn(testEmployee);
+        when(employeeService.findEmployeeById(id)).thenReturn(testEmployee);
         
         EmployeeDTO e = employeeFacade.findEmployeeById(id);
         Assert.assertNotNull(id);
-        Assert.assertNotNull(testEmployee);
+        Assert.assertNotNull(testEmployeeDTO);
         Assert.assertNotNull(e);
-        Assert.assertEquals(e, testEmployee);
+        Assert.assertEquals(e, testEmployeeDTO);
     }
     
     @Test
     public void getAllEmployeesTest() {
-        List<EmployeeDTO> employees = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
         employees.add(testEmployee);
         
-        when(employeeFacade.getAllEmployees()).thenReturn(employees);
+        when(employeeService.getAllEmployees()).thenReturn(employees);
         
         Collection<EmployeeDTO> f = employeeFacade.getAllEmployees();
         Assert.assertNotNull(f);
@@ -104,11 +117,11 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
     
     @Test
     public void isAdminTest() {
-        employeeFacade.addEmployee(testEmployee, "heslo123");
+        employeeFacade.addEmployee(testEmployeeDTO, "heslo123");
         
-        boolean result = employeeFacade.isAdmin(testEmployee);
+        boolean result = employeeFacade.isAdmin(testEmployeeDTO);
         
-        when(employeeFacade.isAdmin(testEmployee)).thenReturn(Boolean.FALSE);
+        when(employeeService.isAdmin(testEmployee)).thenReturn(Boolean.FALSE);
         
         Assert.assertNotNull(result);
         Assert.assertEquals(result, false);
