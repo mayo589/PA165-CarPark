@@ -35,8 +35,9 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
     @Mock
     private EmployeeService employeeService;
     
-    @Autowired
-    @InjectMocks
+    /*@Autowired
+    @InjectMocks*/
+    @Mock
     private EmployeeFacade employeeFacade;
     
     private EmployeeDTO testEmployee;
@@ -51,10 +52,11 @@ public class EmployeeFacadeTest extends AbstractTransactionalTestNGSpringContext
     }
     
     @BeforeMethod
-    public void prepareTestCar() {
+    public void prepareTestEmployee() {
         c1.set(1962, 1, 30);  //January 30th 2000
         sDate = c1.getTime();
         testEmployee = new EmployeeDTO();
+        testEmployee.setId(1L);
         testEmployee.setAddress("Boženy Němcové");
         testEmployee.setFirstName("Jaroslav");
         testEmployee.setLastName("Novák");
