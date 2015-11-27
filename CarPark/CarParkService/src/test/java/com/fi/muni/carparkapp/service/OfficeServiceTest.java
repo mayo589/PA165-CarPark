@@ -1,6 +1,7 @@
 package com.fi.muni.carparkapp.service;
 
 import com.fi.muni.carparkapp.entity.Office;
+import com.fi.muni.carparkapp.dao.OfficeDao;
 import com.fi.muni.carparkapp.service.config.ServiceConfiguration;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,12 @@ import org.testng.annotations.Test;
 @ContextConfiguration(classes = ServiceConfiguration.class)
 public class OfficeServiceTest extends AbstractTransactionalTestNGSpringContextTests {
     
-    /*@Autowired
-    @InjectMocks*/
-    @Mock
+    @Autowired
+    @InjectMocks
     private OfficeService officeService;
+    
+    @Mock
+    private OfficeDao officeDao;
     
     private Office testOffice;
     
@@ -48,7 +51,7 @@ public class OfficeServiceTest extends AbstractTransactionalTestNGSpringContextT
         officeService.AddOffice(testOffice);
         Long id = testOffice.getId();
         
-        when(officeService.findOfficeById(id)).thenReturn(testOffice);
+        when(officeDao.findById(id)).thenReturn(testOffice);
         
         Office o = officeService.findOfficeById(id);
         Assert.assertNotNull(id);
@@ -62,7 +65,7 @@ public class OfficeServiceTest extends AbstractTransactionalTestNGSpringContextT
         List<Office> offices = new ArrayList<>();
         offices.add(testOffice);
         
-        when(officeService.getAllOffices()).thenReturn(offices);
+        when(officeDao.findAll()).thenReturn(offices);
         
         List<Office> f = officeService.getAllOffices();
         Assert.assertNotNull(f);
