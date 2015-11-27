@@ -9,10 +9,23 @@ import java.util.Collection;
  */
 public interface OfficeFacade {
     
+    /**
+     * Find office by id
+     * @param officeId
+     * @return office
+     */
     OfficeDTO findOfficeById(Long officeId);
     
+    /**
+     * Get all offices
+     * @return offices
+     */
     Collection<OfficeDTO> getAllOffices();
     
+    /**
+     * Add office
+     * @param office 
+     */
     void AddOffice(OfficeDTO office);
     
 }
