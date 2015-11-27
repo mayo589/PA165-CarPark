@@ -21,17 +21,20 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import org.dozer.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Jan Starka
  */
+@Service
 public class ReservationFacadeImpl implements ReservationFacade {
 
-    @Inject
+    @Autowired
     private ReservationService reservationService;
     
-    @Inject
+    @Autowired
     private BeanMappingService beanMappingService;
     
     @Override
@@ -54,7 +57,7 @@ public class ReservationFacadeImpl implements ReservationFacade {
 
     @Override
     public Collection<ReservationDTO> getAllReservationsForCar(CarDTO car) {
-        Car c = new Car();
+        Car c = new Car(car.getId());
         c.setColor(car.getColor());
         c.setFuelCapacity(car.getFuelCapacity());
         c.setModel(car.getModel());
@@ -65,7 +68,7 @@ public class ReservationFacadeImpl implements ReservationFacade {
 
     @Override
     public Collection<ReservationDTO> getAllReservationsForOffice(OfficeDTO office) {
-        Office o = new Office();
+        Office o = new Office(office.getId());
         o.setAddress(office.getAddress());
         o.setName(office.getName());
         return beanMappingService.mapTo(reservationService.getAllReservationsForOffice(o), ReservationDTO.class);
