@@ -2,7 +2,15 @@ package com.fi.muni.carparkapp.service;
 
 import com.fi.muni.carparkapp.dao.EmployeeDao;
 import com.fi.muni.carparkapp.entity.Employee;
+import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.List;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.xml.bind.DatatypeConverter;
+import org.bouncycastle.crypto.digests.SHA256Digest;
+import org.bouncycastle.crypto.generators.PKCS5S2ParametersGenerator;
+import org.bouncycastle.crypto.params.KeyParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,11 +50,34 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
     
     private static String createHash(String password) {
-        return password;
+        final int SALT_SIZE = 24;
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[SALT_SIZE];
+        random.nextBytes(salt);
+        byte[] hash = pbkdf2(password.getBytes(), salt);
+        return toHex(salt) + ":" + toHex(hash);
+    }
+    
+    private static byte[] pbkdf2(byte[] password, byte[] salt) {
+        PKCS5S2ParametersGenerator gen = new PKCS5S2ParametersGenerator(new SHA256Digest());
+        gen.init(password, salt, 4096);
+        return ((KeyParameter) gen.generateDerivedParameters(256)).getKey();
+    }
+    
+    private static String toHex(byte[] array) {
+        return DatatypeConverter.printHexBinary(array);
+    }
+    
+    private static byte[] fromHex(String hex) {
+        return DatatypeConverter.parseHexBinary(hex);
     }
     
     private static boolean validatePassword(String password, String correctHash) {
-        return (password == null ? correctHash == null : password.equals(correctHash));
+        String[] params = correctHash.split(":");
+        byte[] salt = fromHex(params[0]);
+        byte[] hash = fromHex(params[1]);
+        byte[] testHash = pbkdf2(password.getBytes(), salt);
+        return Arrays.equals(hash, testHash);
     }
     
 }
