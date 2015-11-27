@@ -7,9 +7,11 @@
 package com.fi.muni.carparkapp.dao;
 
 import com.fi.muni.carparkapp.entity.Employee;
+import com.fi.muni.carparkapp.exceptions.SimpleDataAccessException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -24,16 +26,22 @@ public class EmployeeDaoImpl implements EmployeeDao{
     
     @Override
     public Employee findById(Long id) {
+        if(id <= 0)
+            throw new SimpleDataAccessException("id cannot be < 0");
         return em.find(Employee.class, id);
     }
 
     @Override
     public void create(Employee e) {
+        if(e == null)
+            throw new SimpleDataAccessException("employee cannot be null");
         em.persist(e);
     }
 
     @Override
     public void delete(Employee e) {
+        if(e == null)
+            throw new SimpleDataAccessException("employee cannot be null");
         em.remove(e);
     }
 
@@ -44,6 +52,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
     @Override
     public void update(Employee e) {
+        if(e == null)
+            throw new SimpleDataAccessException("employee cannot be null");
         em.merge(e);
     }
     
