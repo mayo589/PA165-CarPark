@@ -48,7 +48,17 @@ public interface ReservationFacade {
      * @return reservations for given date range
      */
     Collection<ReservationDTO> getReservationsForDateRange(Date fromDate, Date toDate);
+    
+    /**
+     * Adds reservation
+     * @param reservationDTO reservation to add
+     */
     void addReservation(ReservationDTO reservationDTO);
+    
+    /**
+     * Cancels reservation
+     * @param reservationDTO reservation to cancel
+     */
     void cancelReservation(ReservationDTO reservationDTO);
     
 }
