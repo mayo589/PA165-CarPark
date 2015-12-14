@@ -10,7 +10,9 @@
         <module>CarParkService</module>
         <module>CarParkApi</module>
         <module>CarParkPersistence</module>
-    </modules>
+        <module>CarParkRest</module>
+    <module>CarParkWeb</module>
+  </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
