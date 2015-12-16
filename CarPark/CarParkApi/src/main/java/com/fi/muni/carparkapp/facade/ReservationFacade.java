@@ -13,6 +13,8 @@ import java.util.Date;
  */
 public interface ReservationFacade {
     
+    Collection<ReservationDTO> getAllReservations();
+    
     /**
      * Gets reservation by Id
      * @param reservationId

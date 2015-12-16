@@ -38,6 +38,11 @@ public class ReservationFacadeImpl implements ReservationFacade {
     private BeanMappingService beanMappingService;
     
     @Override
+    public Collection<ReservationDTO> getAllReservations() {
+        return beanMappingService.mapTo(reservationService.getAllReservations(), ReservationDTO.class);
+    }
+    
+    @Override
     public ReservationDTO getReservationById(Long reservationId) {
         return beanMappingService.mapTo(reservationService.getReservationById(reservationId), ReservationDTO.class);
     }
