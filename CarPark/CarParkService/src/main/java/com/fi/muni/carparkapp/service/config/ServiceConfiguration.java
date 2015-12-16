@@ -2,9 +2,13 @@ package com.fi.muni.carparkapp.service.config;
 
 import com.fi.muni.carparkapp.JpaTestContext;
 import com.fi.muni.carparkapp.service.CarService;
+import com.fi.muni.carparkapp.service.CarServiceImpl;
 import com.fi.muni.carparkapp.service.EmployeeService;
+import com.fi.muni.carparkapp.service.EmployeeServiceImpl;
 import com.fi.muni.carparkapp.service.OfficeService;
+import com.fi.muni.carparkapp.service.OfficeServiceImpl;
 import com.fi.muni.carparkapp.service.ReservationService;
+import com.fi.muni.carparkapp.service.ReservationServiceImpl;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.dozer.loader.api.BeanMappingBuilder;
@@ -15,7 +19,7 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import(JpaTestContext.class)
-@ComponentScan(basePackageClasses = {CarService.class,  EmployeeService.class, OfficeService.class, ReservationService.class})
+@ComponentScan(basePackageClasses = {CarServiceImpl.class,  EmployeeServiceImpl.class, OfficeServiceImpl.class, ReservationServiceImpl.class})
 public class ServiceConfiguration {
     
     @Bean

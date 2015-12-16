@@ -32,6 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void addEmployee(Employee employee, String unencryptedPassword) {
         employee.setPasswordHash(createHash(unencryptedPassword));
+        employeeDao.create(employee);
     }
 
     @Override
