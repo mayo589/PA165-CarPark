@@ -19,6 +19,7 @@
         <ul>
             <li><a href="${pageContext.request.contextPath}/office/list">Offices</a></li>
             <li><a href="${pageContext.request.contextPath}/employee/list">Employees</a></li>
+            <li><a href="${pageContext.request.contextPath}/reservation/list">Reservations</a></li>
         </ul>
         
         <jsp:invoke fragment="body" />
