@@ -5,7 +5,6 @@
 <my:pagetemplate title="Employees">
     <jsp:attribute name="body">
         <h1>List of employees</h1>
-        employees size: ${employeesSize}
         <table>
             <thead>
                 <tr>

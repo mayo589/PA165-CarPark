@@ -23,6 +23,8 @@ public class SampleDataLoadingFacade {
     
     public void loadData() {
         Employee karel = employee("Martin", "Karel", "Adresa", "123456789", getDate(2000, 2, 1), "heslo");
+        Employee jan = employee("Martin", "Jan", "Adresa2", "223456789", getDate(2000, 3, 1), "heslo");
+        Employee josef = employee("Martin", "Josef", "Adresa3", "323456789", getDate(2000, 4, 1), "heslo");
     }
     
     private Employee employee(String lastName, String firstName, String address,
