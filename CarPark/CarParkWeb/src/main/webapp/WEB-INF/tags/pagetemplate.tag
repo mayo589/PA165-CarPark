@@ -17,6 +17,7 @@
     <body>
         
         <ul>
+            <li><a href="${pageContext.request.contextPath}/car/list">Cars</a></li>
             <li><a href="${pageContext.request.contextPath}/office/list">Offices</a></li>
             <li><a href="${pageContext.request.contextPath}/employee/list">Employees</a></li>
         </ul>
