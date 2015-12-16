@@ -97,7 +97,7 @@ public class ReservationFacadeTest extends AbstractTransactionalTestNGSpringCont
         ReservationDTO reserDto = new ReservationDTO();
         reserDto.setId(1L);
         
-        reservationFacade.addReservation(reservation1);
+        reservationFacade.addReservation(reserDto);
         
         //when(reservationService.getReservationById(1L)).thenReturn(reservation);
         

@@ -12,12 +12,14 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Jan Starka
  */
 @Repository
+@Transactional
 public class ReservationDaoImpl implements ReservationDao {
 
     @PersistenceContext
@@ -61,8 +63,9 @@ public class ReservationDaoImpl implements ReservationDao {
 
     @Override
     public List<Reservation> findAll() {
-        return em.createQuery("select r from Reservation r", Reservation.class)
+        List<Reservation> r = em.createQuery("select r from Reservation r", Reservation.class)
                 .getResultList();
+        return r;
     }
 
     @Override
