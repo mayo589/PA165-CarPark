@@ -19,6 +19,11 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     private ReservationDao reservationDao;
+    
+    @Override
+    public List<Reservation> getAllReservations() {
+        return reservationDao.findAll();
+    }
 
     @Override
     public Reservation getReservationById(Long reservationId) {
