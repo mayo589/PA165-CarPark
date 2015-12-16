@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Jan Hellar
  */
 @Service
-@Transactional
+//@Transactional
 public class EmployeeFacadeImpl implements EmployeeFacade {
 
     @Autowired

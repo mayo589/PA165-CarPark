@@ -24,8 +24,6 @@ public class Car {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    @NotNull
-    @Column(nullable=false,unique=true)
     private String vin;
     
     private String model;
