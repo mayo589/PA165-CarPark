@@ -5,6 +5,9 @@ import com.fi.muni.carparkapp.entity.Employee;
 import com.fi.muni.carparkapp.entity.Office;
 import com.fi.muni.carparkapp.entity.Reservation;
 import com.fi.muni.carparkapp.service.EmployeeService;
+import com.fi.muni.carparkapp.service.CarService;
+import com.fi.muni.carparkapp.service.ReservationService;
+import com.fi.muni.carparkapp.service.OfficeService;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
@@ -24,12 +27,25 @@ public class SampleDataLoadingFacade {
     @Autowired
     private EmployeeService employeeService;
     
+    @Autowired
+    private CarService carService;
+    
+    @Autowired
+    private ReservationService reservationService;
+    
+    @Autowired
+    private OfficeService officeService;
+    
     public void loadData() {
         Employee karel = employee("Martin", "Karel", "Adresa", "123456789", getDate(2000, 2, 1), "heslo");
         Employee jan = employee("Martin", "Jan", "Adresa2", "223456789", getDate(2000, 3, 1), "heslo");
         Employee josef = employee("Martin", "Josef", "Adresa3", "323456789", getDate(2000, 4, 1), "heslo");
         
         Car car1 = car("blue", 50, "BMW", "1C10000", "46546ASD");
+        Car mazda6 = car("Red", 120, "Mazda 6", "AC-157", "XCR-DFWRTJJH446ASF");
+        Car mazda3 = car("Black", 89, "Mazda 3", "BC-784", "XCR-DDFGFJH446ASF");
+        Car mazdaCX5 = car("White", 99, "Mazda CX5", "CC-155", "XCR-DFWRPOIH46ASF");
+        
         Office office1 = office("Brno, Hrnčířská 15", "Brno - Královo pole");
         
         Reservation res1 = reservation(false, getDate(2012, 2, 1), getDate(2012, 3, 1), car1, office1 , karel);
@@ -55,6 +71,7 @@ public class SampleDataLoadingFacade {
         r.setCar(car);
         r.setOffice(office);
         r.setEmployee(employee);
+        reservationService.addReservation(r);
         return r;
     }
     
@@ -65,6 +82,7 @@ public class SampleDataLoadingFacade {
         c.setModel(model);
         c.setPlateNumber(plateNumber);
         c.setVin(vin);
+        carService.create(c);
         return c;
     }
     
@@ -72,6 +90,7 @@ public class SampleDataLoadingFacade {
         Office o = new Office();
         o.setAddress(address);
         o.setName(name);
+        officeService.AddOffice(o);
         return o;
     }
     
