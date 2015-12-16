@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>CarPark</artifactId>
-    <groupId>com.fi.muni</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+        <artifactId>CarPark</artifactId>
+        <groupId>com.fi.muni</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <groupId>com.fi.muni</groupId>
     <artifactId>CarParkWeb</artifactId>
@@ -21,9 +21,23 @@
     
     <dependencies>
         <dependency>
+            <groupId>com.fi.muni</groupId>
+            <artifactId>CarParkSampleData</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.fi.muni</groupId>
+            <artifactId>CarParkApi</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fi.muni</groupId>
+            <artifactId>CarParkService</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -78,7 +92,5 @@
       </plugin>
     </plugins>
   </build>
-
-
 
 </project>

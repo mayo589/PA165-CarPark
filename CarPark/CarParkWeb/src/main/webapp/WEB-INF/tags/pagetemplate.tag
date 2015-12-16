@@ -10,11 +10,17 @@
     <head>
         <meta charset="utf-8">
         <title><c:out value="${title}" /></title>
+        
         <jsp:invoke fragment="head" />
     </head>
     
     <body>
-        <div>navigation bar</div>
+        
+        <ul>
+            <li><a href="${pageContext.request.contextPath}/office">Offices</a></li>
+            <li><a href="${pageContext.request.contextPath}/employee">Employees</a></li>
+        </ul>
+        
         <jsp:invoke fragment="body" />
     </body>
 </html>

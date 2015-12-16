@@ -11,6 +11,7 @@
         <module>CarParkPersistence</module>
         <module>CarParkRest</module>
         <module>CarParkWeb</module>
+        <module>CarParkSampleData</module>
     </modules>
   
     <properties>

@@ -1,8 +1,10 @@
 package com.fi.muni.carparkweb.config;
 
+import com.fi.muni.sampledata.SampleDataConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
+@Import({SampleDataConfiguration.class})
 @ComponentScan(basePackages = "com.fi.muni.carparkweb.controllers")
 public class WebConfig extends WebMvcConfigurerAdapter {
     
