@@ -3,8 +3,10 @@ package com.fi.muni.carparkapp.entity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,15 +32,17 @@ public class Office {
     @Column(nullable=false)
     private String address;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @NotNull
-    private List<Reservation> reservations = new ArrayList<Reservation>();
+    private List<Reservation> reservations;
     
     public Office(Long officeId) {
+        this.reservations = new ArrayList<>();
         this.id = officeId;
     }
     
     public Office() {
+        this.reservations = new ArrayList<>();
     }
     
     public List<Reservation> getReservations() {
