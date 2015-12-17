@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Jan Hellar (436358)
  */
 @Repository
+@Transactional
 public class OfficeDaoImpl implements OfficeDao {
     
     @PersistenceContext
