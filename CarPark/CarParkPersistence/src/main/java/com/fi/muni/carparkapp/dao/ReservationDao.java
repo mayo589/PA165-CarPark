@@ -45,7 +45,7 @@ public interface ReservationDao {
      * @param office office, for which is reservation to be found
      * @return Reservations for given office
      */
-    public List<Reservation> findByOffice(Office office);
+    //public List<Reservation> findByOffice(Office office);
     
     /**
      * Get all reservations in tange of two dates

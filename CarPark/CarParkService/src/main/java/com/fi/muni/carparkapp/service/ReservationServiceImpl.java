@@ -40,10 +40,10 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationDao.findByCar(car);
     }
 
-    @Override
+    /*@Override
     public List<Reservation> getAllReservationsForOffice(Office office) {
         return reservationDao.findByOffice(office);
-    }
+    }*/
 
     @Override
     public List<Reservation> getAllReservationsForDateRange(Date fromDate, Date toDate) {

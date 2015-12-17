@@ -38,9 +38,9 @@ public class Reservation {
     @NotNull
     private Car car;
 
-    @ManyToOne(optional = false)
+    /*@ManyToOne(optional = false)
     @NotNull
-    private Office office;
+    private Office office;*/
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -61,13 +61,13 @@ public class Reservation {
         this.car = car;
     }
 
-    public Office getOffice() {
+    /*public Office getOffice() {
         return office;
-    }
+    }*/
 
-    public void setOffice(Office office) {
+    /*public void setOffice(Office office) {
         this.office = office;
-    }
+    }*/
 
     public Date getToDate() {
         return toDate;
@@ -118,7 +118,6 @@ public class Reservation {
         int result = 1;
         result = prime * result + ((employee == null) ? 0 : employee.hashCode());
         result = prime * result + ((car == null) ? 0 : car.hashCode());
-        result = prime * result + ((office == null) ? 0 : office.hashCode());
         return result;
     }
 
@@ -142,13 +141,6 @@ public class Reservation {
             return false;
         }
         if (car != other.car) {
-            return false;
-        }
-        if (office == null) {
-            if (other.office != null) {
-                return false;
-            }
-        } else if (!office.equals(other.office)) {
             return false;
         }
         return true;

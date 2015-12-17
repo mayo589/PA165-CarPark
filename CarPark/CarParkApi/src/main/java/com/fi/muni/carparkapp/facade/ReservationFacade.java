@@ -41,7 +41,7 @@ public interface ReservationFacade {
      * @param office office for which the reservation is given
      * @return reservation for given office
      */
-    Collection<ReservationDTO> getAllReservationsForOffice(OfficeDTO office);
+    //Collection<ReservationDTO> getAllReservationsForOffice(OfficeDTO office);
     
     /**
      * Gets reservations for given date range

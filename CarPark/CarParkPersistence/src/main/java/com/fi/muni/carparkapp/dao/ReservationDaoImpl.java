@@ -96,7 +96,7 @@ public class ReservationDaoImpl implements ReservationDao {
         }
     }
 
-    @Override
+    /*@Override
     public List<Reservation> findByOffice(Office office) {
         if (office == null)
         {
@@ -108,7 +108,7 @@ public class ReservationDaoImpl implements ReservationDao {
         } catch (NoResultException nre) {
             return null;
         }
-    }
+    }*/
 
     @Override
     public List<Reservation> findByDateRange(Date fromDate, Date toDate) {

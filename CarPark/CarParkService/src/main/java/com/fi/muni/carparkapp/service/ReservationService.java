@@ -36,7 +36,7 @@ public interface ReservationService {
      * @param office Office for which reservation will be returned
      * @return 
      */
-    List<Reservation> getAllReservationsForOffice(Office office);
+    //List<Reservation> getAllReservationsForOffice(Office office);
     
     /**
      * Gets all reservations for specified rage of dates

@@ -128,7 +128,7 @@ public class ReservationServiceTest extends AbstractTransactionalTestNGSpringCon
         Reservation res1 = new Reservation(4L);
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        res1.setOffice(office1);
+        //res1.setOffice(office1);
         res1.setFromDate(new Date());
         res1.setToDate(new Date());
         
@@ -142,7 +142,7 @@ public class ReservationServiceTest extends AbstractTransactionalTestNGSpringCon
         Reservation res1 = new Reservation(4L);
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        res1.setOffice(office1);
+        //res1.setOffice(office1);
         res1.setFromDate(new Date());
         res1.setToDate(new Date());
         
@@ -157,7 +157,7 @@ public class ReservationServiceTest extends AbstractTransactionalTestNGSpringCon
         Reservation res1 = new Reservation(4L);
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        res1.setOffice(office1);
+        //res1.setOffice(office1);
         res1.setFromDate(new Date());
         res1.setToDate(new Date());
         res1.setCancelled(false);
@@ -176,21 +176,21 @@ public class ReservationServiceTest extends AbstractTransactionalTestNGSpringCon
         Reservation res1 = new Reservation(4L);        
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        res1.setOffice(office1);
+        //res1.setOffice(office1);
         res1.setFromDate(new Date());
         res1.setToDate(new Date());
         
         Reservation res2 = new Reservation(5L);        
         res2.setEmployee(employee1);
         res2.setCar(car2);
-        res2.setOffice(office1);
+        //res2.setOffice(office1);
         res2.setFromDate(new Date());
         res2.setToDate(new Date());
         
         Reservation res3 = new Reservation(6L);        
         res3.setEmployee(employee2);
         res3.setCar(car3);
-        res3.setOffice(office1);
+        //res3.setOffice(office1);
         res3.setFromDate(new Date());
         res3.setToDate(new Date());
         
@@ -218,21 +218,21 @@ public class ReservationServiceTest extends AbstractTransactionalTestNGSpringCon
         Reservation res1 = new Reservation(4L);        
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        res1.setOffice(office1);
+        //res1.setOffice(office1);
         res1.setFromDate(new Date());
         res1.setToDate(new Date());
         
         Reservation res2 = new Reservation(5L);        
         res2.setEmployee(employee1);
         res2.setCar(car2);
-        res2.setOffice(office1);
+        //res2.setOffice(office1);
         res2.setFromDate(new Date());
         res2.setToDate(new Date());
         
         Reservation res3 = new Reservation(6L);        
         res3.setEmployee(employee1);
         res3.setCar(car2);
-        res3.setOffice(office1);
+        //res3.setOffice(office1);
         res3.setFromDate(new Date());
         res3.setToDate(new Date());
         
@@ -256,26 +256,26 @@ public class ReservationServiceTest extends AbstractTransactionalTestNGSpringCon
         Assert.assertEquals(reservationService.getAllReservationsForCar(car3).size(), 0);
     }
     
-    @org.testng.annotations.Test
+    /*@org.testng.annotations.Test
     public void getResForOffice(){
         Reservation res1 = new Reservation(4L);        
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        res1.setOffice(office1);
+        //res1.setOffice(office1);
         res1.setFromDate(new Date());
         res1.setToDate(new Date());
         
         Reservation res2 = new Reservation(5L);        
         res2.setEmployee(employee1);
         res2.setCar(car2);
-        res2.setOffice(office1);
+        //res2.setOffice(office1);
         res2.setFromDate(new Date());
         res2.setToDate(new Date());
         
         Reservation res3 = new Reservation(6L);        
         res3.setEmployee(employee1);
         res3.setCar(car2);
-        res3.setOffice(office2);
+        //res3.setOffice(office2);
         res3.setFromDate(new Date());
         res3.setToDate(new Date());
         
@@ -297,28 +297,28 @@ public class ReservationServiceTest extends AbstractTransactionalTestNGSpringCon
         Assert.assertEquals(reservationService.getAllReservationsForOffice(office1).size(), expectedReservationsForFirst.size());
         Assert.assertEquals(reservationService.getAllReservationsForOffice(office2).size(), expectedReservationsForSecond.size());
         Assert.assertEquals(reservationService.getAllReservationsForOffice(office3).size(), 0);
-    }
+    }*/
     
     @org.testng.annotations.Test
     public void getResForRange(){
         Reservation res1 = new Reservation(4L);        
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        res1.setOffice(office1);
+        //res1.setOffice(office1);
         res1.setFromDate(new Date());
         res1.setToDate(java.sql.Date.valueOf("2015-11-01"));
         
         Reservation res2 = new Reservation(5L);        
         res2.setEmployee(employee1);
         res2.setCar(car2);
-        res2.setOffice(office1);
+        //res2.setOffice(office1);
         res2.setFromDate(new Date());
         res2.setToDate(java.sql.Date.valueOf("2015-11-22"));
         
         Reservation res3 = new Reservation(6L);        
         res3.setEmployee(employee1);
         res3.setCar(car2);
-        res3.setOffice(office2);
+        //res3.setOffice(office2);
         res3.setFromDate(new Date());
         res3.setToDate(java.sql.Date.valueOf("2015-05-15"));
         

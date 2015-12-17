@@ -71,13 +71,13 @@ public class ReservationFacadeImpl implements ReservationFacade {
         return beanMappingService.mapTo(reservationService.getAllReservationsForCar(c), ReservationDTO.class);
     }
 
-    @Override
+    /*@Override
     public Collection<ReservationDTO> getAllReservationsForOffice(OfficeDTO office) {
         Office o = new Office(office.getId());
         o.setAddress(office.getAddress());
         o.setName(office.getName());
         return beanMappingService.mapTo(reservationService.getAllReservationsForOffice(o), ReservationDTO.class);
-    }
+    }*/
 
     @Override
     public Collection<ReservationDTO> getReservationsForDateRange(Date fromDate, Date toDate) {

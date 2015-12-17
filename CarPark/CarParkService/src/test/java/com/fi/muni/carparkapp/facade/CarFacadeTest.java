@@ -197,7 +197,7 @@ public class CarFacadeTest extends AbstractTransactionalTestNGSpringContextTests
         Reservation res1 = new Reservation(4L);        
         res1.setEmployee(employee1);
         res1.setCar(carr1);
-        res1.setOffice(office1);
+        //res1.setOffice(office1);
         res1.setFromDate(new Date());
         res1.setToDate(java.sql.Date.valueOf("2016-11-01"));
         reservationService.addReservation(res1);

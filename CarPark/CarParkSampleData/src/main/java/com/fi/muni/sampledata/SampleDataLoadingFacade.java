@@ -69,7 +69,7 @@ public class SampleDataLoadingFacade {
         r.setFromDate(fromDate);
         r.setToDate(toDate);
         r.setCar(car);
-        r.setOffice(office);
+        //r.setOffice(office);
         r.setEmployee(employee);
         reservationService.addReservation(r);
         return r;

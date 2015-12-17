@@ -169,7 +169,7 @@ public class ReservationFacadeTest extends AbstractTransactionalTestNGSpringCont
         Assert.assertEquals(rf.size(), lrd.size());
     }
     
-    @Test
+    /*@Test
     public void getAllReservationsForOfficeTest() {
         Office o = new Office(1L);
         OfficeDTO od = new OfficeDTO();
@@ -189,7 +189,7 @@ public class ReservationFacadeTest extends AbstractTransactionalTestNGSpringCont
         
         Collection<ReservationDTO> rf = reservationFacade.getAllReservationsForOffice(od);
         Assert.assertEquals(rf.size(), lrd.size());
-    }
+    }*/
     
     @Test
     public void getAllReservationsForCarTest() {
