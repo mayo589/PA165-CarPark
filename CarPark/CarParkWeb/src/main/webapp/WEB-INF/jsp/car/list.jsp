@@ -7,18 +7,10 @@
 
 <my:pagetemplate title="Cars">
     <jsp:attribute name="body">
-
-        <div class="form-group row">
-            <div class="col-md-2">
-                <a href="${pageContext.request.contextPath}/car/new" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    Add a new car
-                </a>
-            </div>
-        </div>
-
-        <div class="CSSTableGenerator">
-            <table >
+           
+        <div class="panel panel-default">
+            <div class="panel-heading">All carss in CarPark</div>
+            <table class="table">
                 <thead>
                     <tr>
                         <th></th>
@@ -34,7 +26,7 @@
                     <c:forEach items="${cars}" var="car">
                         <tr>
                             <td class="col-md-1">
-                                <a href="${pageContext.request.contextPath}/car/detail/${car.id}" class="btn btn-info btn-block">Detail</a>
+                                <a href="${pageContext.request.contextPath}/car/detail/${car.id}" class="btn btn-sm btn-default">Detail</a>
                             </td>
                             <td class="col-md-2"><c:out value="${car.model}"/></td>
                             <td class="col-md-2"><c:out value="${car.color}"/></td>
@@ -54,12 +46,21 @@
                                 </form>
                             </td>
                             <td class="col-md-1 col-lg-1">
-                                Delete btn TODO
+                                <a href="${pageContext.request.contextPath}/car/detail/${car.id}" class="btn btn-sm btn-warning">Delete</a>
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
+        </div>
+           
+        <div class="form-group row">
+            <div class="col-md-2">
+                <a href="${pageContext.request.contextPath}/car/new" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Add a new car
+                </a>
+            </div>
         </div>
     </jsp:attribute>
 </my:pagetemplate>

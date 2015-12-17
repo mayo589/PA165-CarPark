@@ -9,6 +9,10 @@
     <jsp:attribute name="body">
         <table class="table">
             <tr>
+                <td class="col-md-2"><b>ID</b></td>
+                <td>${car.id}</td>
+            </tr>
+            <tr>
                 <td class="col-md-2"><b>Model</b></td>
                 <td>${car.model}</td>
             </tr>
