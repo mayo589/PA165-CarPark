@@ -14,6 +14,8 @@ public interface EmployeeService {
     
     Employee findEmployeeById(Long employeeId);
     
+    Employee findEmployeeByName(String employeeName);
+    
     void addEmployee(Employee employee, String unencryptedPassword);
     
     List<Employee> getAllEmployees();

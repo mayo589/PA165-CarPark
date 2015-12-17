@@ -37,9 +37,9 @@ public class SampleDataLoadingFacade {
     private OfficeService officeService;
     
     public void loadData() {
-        Employee karel = employee("Martin", "Karel", "Adresa", "123456789", getDate(2000, 2, 1), "heslo");
-        Employee jan = employee("Martin", "Jan", "Adresa2", "223456789", getDate(2000, 3, 1), "heslo");
-        Employee josef = employee("Martin", "Josef", "Adresa3", "323456789", getDate(2000, 4, 1), "heslo");
+        Employee karel = employee("Martin", "Karel", "Adresa", "123456789", getDate(2000, 2, 1), "heslo", true);
+        Employee jan = employee("Martin2", "Jan", "Adresa2", "223456789", getDate(2000, 3, 1), "heslo", false);
+        Employee josef = employee("Martin3", "Josef", "Adresa3", "323456789", getDate(2000, 4, 1), "heslo", false);
         
         Car car1 = car("blue", 50, "BMW", "1C10000", "46546ASD");
         Car mazda6 = car("Red", 120, "Mazda 6", "AC-157", "XCR-DFWRTJJH446ASF");
@@ -52,13 +52,14 @@ public class SampleDataLoadingFacade {
     }
     
     private Employee employee(String lastName, String firstName, String address,
-            String telephone, Date date, String password) {
+            String telephone, Date date, String password, boolean admin) {
         Employee e = new Employee();
         e.setLastName(lastName);
         e.setFirstName(firstName);
         e.setAddress(address);
         e.setTelephone(telephone);
         e.setDateOfBirth(date);
+        e.setAdmin(admin);
         employeeService.addEmployee(e, password);
         return e;
     }

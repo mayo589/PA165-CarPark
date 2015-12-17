@@ -18,6 +18,13 @@ public interface EmployeeFacade {
     EmployeeDTO findEmployeeById(Long employeeId);
     
     /**
+     * Find employee by name (lastName)
+     * @param employeeName
+     * @return employee
+     */
+    EmployeeDTO findEmployeeByName(String employeeName);
+    
+    /**
      * Add employee
      * @param employee
      * @param unencryptedPassword 

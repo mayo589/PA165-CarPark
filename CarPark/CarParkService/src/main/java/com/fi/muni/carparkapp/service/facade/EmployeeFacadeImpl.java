@@ -30,6 +30,12 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
         Employee employee = employeeService.findEmployeeById(employeeId);
         return (employee == null) ? null : beanMappingService.mapTo(employee, EmployeeDTO.class);
     }
+    
+    @Override
+    public EmployeeDTO findEmployeeByName(String employeeName) {
+        Employee employee = employeeService.findEmployeeByName(employeeName);
+        return (employee == null) ? null : beanMappingService.mapTo(employee, EmployeeDTO.class);
+    }
 
     @Override
     public void addEmployee(EmployeeDTO employee, String unencryptedPassword) {

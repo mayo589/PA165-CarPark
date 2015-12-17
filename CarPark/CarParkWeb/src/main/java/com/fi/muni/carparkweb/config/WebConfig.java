@@ -10,13 +10,14 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
 @Import({SampleDataConfiguration.class})
-@ComponentScan(basePackages = "com.fi.muni.carparkweb.controllers")
+@ComponentScan(basePackages = "com.fi.muni.carparkweb")
 public class WebConfig extends WebMvcConfigurerAdapter {
     
     @Override
@@ -35,6 +36,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public Validator validator() {
         return new LocalValidatorFactoryBean();
+    }
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
     }
     
 }

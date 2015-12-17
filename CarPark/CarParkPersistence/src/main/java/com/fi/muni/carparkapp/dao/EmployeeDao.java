@@ -21,6 +21,13 @@ public interface EmployeeDao {
      * @return Employee object
      */
     public Employee findById(Long id);
+    
+    /**
+     *Finds employee by name (lastName)
+     * @param name employee last name
+     * @return Employee object
+     */
+    public Employee findByName(String name);
 
     /**
      * Persists employee

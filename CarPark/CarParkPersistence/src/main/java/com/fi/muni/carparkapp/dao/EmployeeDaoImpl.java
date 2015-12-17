@@ -10,6 +10,7 @@ import com.fi.muni.carparkapp.entity.Employee;
 import com.fi.muni.carparkapp.exceptions.SimpleDataAccessException;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
@@ -31,6 +32,22 @@ public class EmployeeDaoImpl implements EmployeeDao{
         if(id <= 0)
             throw new SimpleDataAccessException("id cannot be < 0");
         return em.find(Employee.class, id);
+    }
+    
+    @Override
+    public Employee findByName(String name) {
+        if (name == null) {
+            throw new SimpleDataAccessException("name cannot be null");
+        }
+        if ("".equals(name)) {
+            throw new SimpleDataAccessException("name cannot be empty");
+        }
+        try {
+            return em.createQuery("select e from Employee e where lastName = :name",
+                    Employee.class).setParameter("name", name).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
     }
 
     @Override

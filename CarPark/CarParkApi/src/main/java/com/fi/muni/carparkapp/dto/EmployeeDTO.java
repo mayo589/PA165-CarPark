@@ -23,22 +23,22 @@ public class EmployeeDTO {
     
     private Boolean admin;
     
-    private String password;
+    private String passwordHash;
 
     public Boolean getAdmin() {
         return admin;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
     public void setAdmin(Boolean admin) {
         this.admin = admin;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
     
     public Long getId() {

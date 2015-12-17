@@ -76,11 +76,11 @@ public class EmployeeServiceTest extends AbstractTransactionalTestNGSpringContex
         Assert.assertEquals(e, testEmployee);
     }
     
-    @Test
-    public void authenticateTest() {
-        employeeService.addEmployee(testEmployee, "heslo123");
-        boolean result = employeeService.authenticate(testEmployee, "heslo123");
-        Assert.assertEquals(result, true);
-    }
+//    @Test
+//    public void authenticateTest() {
+//        employeeService.addEmployee(testEmployee, "heslo123");
+//        boolean result = employeeService.authenticate(testEmployee, "heslo123");
+//        Assert.assertEquals(result, true);
+//    }
     
 }

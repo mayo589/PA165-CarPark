@@ -12,6 +12,7 @@ import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.generators.PKCS5S2ParametersGenerator;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -28,10 +29,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findEmployeeById(Long employeeId) {
         return employeeDao.findById(employeeId);
     }
+    
+    @Override
+    public Employee findEmployeeByName(String employeeName) {
+        return employeeDao.findByName(employeeName);
+    }
 
     @Override
     public void addEmployee(Employee employee, String unencryptedPassword) {
-        employee.setPasswordHash(createHash(unencryptedPassword));
+        employee.setPasswordHash(new BCryptPasswordEncoder().encode(unencryptedPassword));
         employeeDao.create(employee);
     }
 
