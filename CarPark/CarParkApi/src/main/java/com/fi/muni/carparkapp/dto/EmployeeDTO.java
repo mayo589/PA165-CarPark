@@ -20,7 +20,27 @@ public class EmployeeDTO {
     private String address;
     
     private String telephone;
+    
+    private Boolean admin;
+    
+    private String password;
 
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     public Long getId() {
         return id;
     }

@@ -46,7 +46,7 @@ public class EmployeeController {
         if (bindingResult.hasErrors()) {
             return "employee/new";
         }
-        employeeFacade.addEmployee(formBean, "pass");
+        employeeFacade.addEmployee(formBean, formBean.getPassword());
         return "redirect:" + uriBuilder.path("/employee/list").build().toUriString();
     }
     

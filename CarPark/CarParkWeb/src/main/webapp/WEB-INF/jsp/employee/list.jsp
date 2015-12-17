@@ -17,6 +17,7 @@
                     <th>date of birth</th>
                     <th>address</th>
                     <th>telephone</th>
+                    <th>admin</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                         <td><c:out value="${employee.dateOfBirth}" /></td>
                         <td><c:out value="${employee.address}" /></td>
                         <td><c:out value="${employee.telephone}" /></td>
+                        <td><c:out value="${employee.admin}" /></td>
                     </tr>
                 </c:forEach>
             </tbody>

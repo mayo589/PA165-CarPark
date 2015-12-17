@@ -28,6 +28,14 @@
                 <form:label path="telephone">Telephone:</form:label>
                 <form:input path="telephone" />
             </div>
+            <div>
+                <form:label path="admin">Admin:</form:label>
+                <form:checkbox path="admin" />
+            </div>
+            <div>
+                <form:label path="password">Password:</form:label>
+                <form:input path="password" />
+            </div>
             <button type="submit">Create</button>
         </form:form>
     </jsp:attribute>
