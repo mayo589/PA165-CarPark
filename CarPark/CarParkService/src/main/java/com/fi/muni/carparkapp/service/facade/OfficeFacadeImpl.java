@@ -15,6 +15,7 @@ import com.fi.muni.carparkapp.entity.Office;
  * @author Jan Hellar
  */
 @Service
+@Transactional
 public class OfficeFacadeImpl implements OfficeFacade {
     
     @Autowired

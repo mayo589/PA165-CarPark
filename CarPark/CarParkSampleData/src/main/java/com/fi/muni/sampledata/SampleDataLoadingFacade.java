@@ -46,9 +46,9 @@ public class SampleDataLoadingFacade {
         Car mazda3 = car("Black", 89, "Mazda 3", "BC-784", "XCR-DDFGFJH446ASF");
         Car mazdaCX5 = car("White", 99, "Mazda CX5", "CC-155", "XCR-DFWRPOIH46ASF");
         
-        Office office1 = office("Brno, Hrnčířská 15", "Brno - Královo pole");
+        Reservation res1 = reservation(false, getDate(2012, 2, 1), getDate(2012, 3, 1), car1, null , karel);
         
-        Reservation res1 = reservation(false, getDate(2012, 2, 1), getDate(2012, 3, 1), car1, office1 , karel);
+        Office office1 = office("Brno, Hrnčířská 15", "Brno - Královo pole", res1);
     }
     
     private Employee employee(String lastName, String firstName, String address,
@@ -86,10 +86,11 @@ public class SampleDataLoadingFacade {
         return c;
     }
     
-    private Office office(String address, String name) {
+    private Office office(String address, String name, Reservation reservation) {
         Office o = new Office();
         o.setAddress(address);
         o.setName(name);
+        o.addReservation(reservation);
         officeService.AddOffice(o);
         return o;
     }
