@@ -9,33 +9,16 @@ import java.util.Objects;
  */
 public class ReservationDTO {
 
-    private Long id;
-
-    private EmployeeDTO employee;
-
-    private CarDTO car;
-
-    private OfficeDTO office;
-
-    private Date fromDate;
-
-    private Date toDate;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public EmployeeDTO getEmployee() {
-        return employee;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.employee);
+        hash = 41 * hash + Objects.hashCode(this.car);
+        hash = 41 * hash + Objects.hashCode(this.office);
+        hash = 41 * hash + Objects.hashCode(this.fromDate);
+        hash = 41 * hash + Objects.hashCode(this.toDate);
+        hash = 41 * hash + (this.cancelled ? 1 : 0);
         return hash;
     }
 
@@ -66,8 +49,47 @@ public class ReservationDTO {
         if (!Objects.equals(this.toDate, other.toDate)) {
             return false;
         }
+        if (this.cancelled != other.cancelled) {
+            return false;
+        }
         return true;
     }
+
+    private Long id;
+
+    private EmployeeDTO employee;
+
+    private CarDTO car;
+
+    private OfficeDTO office;
+
+    private Date fromDate;
+
+    private Date toDate;
+    
+    private boolean cancelled;
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public EmployeeDTO getEmployee() {
+        return employee;
+    }
+
+    
 
     public void setEmployee(EmployeeDTO employee) {
         this.employee = employee;

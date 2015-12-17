@@ -10,7 +10,7 @@
     <head>
         <meta charset="utf-8">
         <title><c:out value="${title}" /></title>
-        
+            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
         <jsp:invoke fragment="head" />
     </head>
     

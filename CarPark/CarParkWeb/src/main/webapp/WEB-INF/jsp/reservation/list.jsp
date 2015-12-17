@@ -6,19 +6,31 @@
 <my:pagetemplate title="Reservations">
     <jsp:attribute name="body">
         <h1>List of reservations</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>id</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${reservations}" var="reservation">
+        <div class="CSSTableGenerator">
+            <table>
+                <thead>
                     <tr>
-                        <td>${reservation.id}</td>
+                        <th>Id</th>
+                        <th>From date</th>
+                        <th>To date</th>
+                        <th>Employee name</th>
+                        <th>Car informations</th>
+                        <th>Cancelled</th>
                     </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <c:forEach items="${reservations}" var="reservation">
+                        <tr>
+                            <td>${reservation.id}</td>
+                            <td><c:out value="${reservation.fromDate}" /></td>
+                            <td><c:out value="${reservation.toDate}" /></td>
+                            <td><c:out value="${reservation.employee.firstName}" /> &nbsp; <c:out value="${reservation.employee.lastName}" /></td>
+                            <td><c:out value="${reservation.car.model}" /> &nbsp; <c:out value="${reservation.car.plateNumber}" /></td>
+                            <td><c:out value="${reservation.cancelled}" /></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </jsp:attribute>
 </my:pagetemplate>

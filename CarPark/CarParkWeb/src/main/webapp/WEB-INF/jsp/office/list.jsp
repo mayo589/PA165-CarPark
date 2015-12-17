@@ -6,6 +6,8 @@
     <jsp:attribute name="body">
         <h1>List of offices</h1>
         <a href="${pageContext.request.contextPath}/office/new">New</a>
+        
+        <div class="CSSTableGenerator">
         <table>
             <thead>
                 <tr>
@@ -28,5 +30,6 @@
                 </c:forEach>
             </tbody>
         </table>
+        </div>
     </jsp:attribute>
 </my:pagetemplate>

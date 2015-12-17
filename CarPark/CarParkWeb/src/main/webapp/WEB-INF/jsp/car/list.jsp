@@ -11,54 +11,55 @@
         <div class="form-group row">
             <div class="col-md-2">
                 <a href="${pageContext.request.contextPath}/car/new" class="btn btn-primary">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                Add a new car
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Add a new car
                 </a>
             </div>
         </div>
 
-        <table class="table table-hover table-condensed fixed">
-            <thead>
-            <tr>
-                <th></th>
-                <th>Model</th>
-                <th>Color</th>
-                <th>Vin</th>
-                <th>Fuel Capacity</th>
-                <th>Plate Number</th>
-                <th>Available</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${cars}" var="car">
-                <tr>
-                    <td class="col-md-1">
-                        <a href="${pageContext.request.contextPath}/car/detail/${car.id}" class="btn btn-info btn-block">Detail</a>
-                    </td>
-                    <td class="col-md-2"><c:out value="${car.model}"/></td>
-                    <td class="col-md-2"><c:out value="${car.color}"/></td>
-                    <td class="col-md-2"><c:out value="${car.vin}"/></td>
-                    <td class="col-md-2"><c:out value="${car.fuelCapacity}"/></td>
-                    <td class="col-md-2"><c:out value="${car.plateNumber}"/></td>
-                    <td class="col-md-2">
-                        <form method="post" action="${pageContext.request.contextPath}/car/availabilityOfCar/${car.id}">
-                            <c:choose>
-                                <c:when test="${empty param.available || param.available}">
-                                    Available
-                                </c:when>
-                                <c:otherwise>
-                                    Reserved
-                                </c:otherwise>
-                            </c:choose>
-                        </form>
-                    </td>
-                    <td class="col-md-1 col-lg-1">
-                        Delete btn TODO
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-
+        <div class="CSSTableGenerator">
+            <table >
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Model</th>
+                        <th>Color</th>
+                        <th>Vin</th>
+                        <th>Fuel Capacity</th>
+                        <th>Plate Number</th>
+                        <th>Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${cars}" var="car">
+                        <tr>
+                            <td class="col-md-1">
+                                <a href="${pageContext.request.contextPath}/car/detail/${car.id}" class="btn btn-info btn-block">Detail</a>
+                            </td>
+                            <td class="col-md-2"><c:out value="${car.model}"/></td>
+                            <td class="col-md-2"><c:out value="${car.color}"/></td>
+                            <td class="col-md-2"><c:out value="${car.vin}"/></td>
+                            <td class="col-md-2"><c:out value="${car.fuelCapacity}"/></td>
+                            <td class="col-md-2"><c:out value="${car.plateNumber}"/></td>
+                            <td class="col-md-2">
+                                <form method="post" action="${pageContext.request.contextPath}/car/availabilityOfCar/${car.id}">
+                                    <c:choose>
+                                        <c:when test="${empty param.available || param.available}">
+                                            Available
+                                        </c:when>
+                                        <c:otherwise>
+                                            Reserved
+                                        </c:otherwise>
+                                    </c:choose>
+                                </form>
+                            </td>
+                            <td class="col-md-1 col-lg-1">
+                                Delete btn TODO
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </jsp:attribute>
 </my:pagetemplate>
