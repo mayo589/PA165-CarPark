@@ -97,9 +97,13 @@ public class ReservationFacadeTest extends AbstractTransactionalTestNGSpringCont
         ReservationDTO reserDto = new ReservationDTO();
         reserDto.setId(1L);
         
-        reservationFacade.addReservation(reserDto);
+        //reservationFacade.addReservation(reserDto);
+        //reservationFacade.addReservation(reservation1);
         
-        //when(reservationService.getReservationById(1L)).thenReturn(reservation);
+        List<Reservation> listR = new ArrayList<Reservation>();
+        listR.add(reservation);
+        
+        when(reservationService.getAllReservations()).thenReturn(listR);
         
         Assert.assertEquals(reservationFacade.getAllReservations().size(), 1);
     }
