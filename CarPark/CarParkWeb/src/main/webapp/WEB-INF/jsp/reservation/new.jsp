@@ -20,6 +20,8 @@
                 <form:input path="toDate" class="date"></form:input>
             </div>
             <fmt:parseDate value="${item.date}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
+            
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button type="submit">Create</button>
         </form:form>
     </jsp:attribute>

@@ -16,6 +16,8 @@
                 <form:label path="address">Address:</form:label>
                 <form:input path="address" />
             </div>
+            
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button type="submit">Create</button>
         </form:form>
     </jsp:attribute>
