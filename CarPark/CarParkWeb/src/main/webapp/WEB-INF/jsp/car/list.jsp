@@ -46,25 +46,29 @@
                                     </c:choose>
                                 </form>
                             </td>
-                            <td class="col-md-1 col-lg-1">
-                                <a href="${pageContext.request.contextPath}/car/detail/${car.id}" class="btn btn-sm btn-warning">Delete</a>
-                            </td>
-                            <td class="col-md-1 col-lg-1">
-                                <a href="${pageContext.request.contextPath}/car/update/${car.id}" class="btn btn-sm btn-warning">Update</a>
-                            </td>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <td class="col-md-1 col-lg-1">
+                                    <a href="${pageContext.request.contextPath}/car/detail/${car.id}" class="btn btn-sm btn-warning">Delete</a>
+                                </td>
+                                <td class="col-md-1 col-lg-1">
+                                    <a href="${pageContext.request.contextPath}/car/update/${car.id}" class="btn btn-sm btn-warning">Update</a>
+                                </td>
+                            </sec:authorize>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </div>
         
-        <div class="form-group row">
-            <div class="col-md-2">
-                <a href="${pageContext.request.contextPath}/car/new" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    Add a new car
-                </a>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <a href="${pageContext.request.contextPath}/car/new" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Add a new car
+                    </a>
+                </div>
             </div>
-        </div>
+        </sec:authorize>
     </jsp:attribute>
 </my:pagetemplate>

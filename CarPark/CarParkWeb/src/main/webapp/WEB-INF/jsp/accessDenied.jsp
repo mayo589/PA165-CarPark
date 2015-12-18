@@ -5,6 +5,5 @@
 <my:pagetemplate>
     <jsp:attribute name="body">
         <h1>not authorized</h1>
-        <a href="${pageContext.request.contextPath}/logout">Logout</a>
     </jsp:attribute>
 </my:pagetemplate>
