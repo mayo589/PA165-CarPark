@@ -37,14 +37,6 @@
                             <td class="col-md-2"><c:out value="${reservation.employee.firstName}" /> &nbsp; <c:out value="${reservation.employee.lastName}" /></td>
                             <td class="col-md-2"><c:out value="${reservation.car.model}" /> &nbsp; <c:out value="${reservation.car.plateNumber}" /></td>
                             <td class="col-md-2"><c:out value="${reservation.cancelled}" /></td>
-                            <td class="col-md-1 col-lg-1">
-                                <c:if test="${not reservation.cancelled}">
-                                    <form class="btn-sm btn-danger form-just-with-button" method="post" action="${pageContext.request.contextPath}/reservation/cancel/${reservation.id}">
-                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                        <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
-                                    </form>
-                                </c:if>
-                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>
