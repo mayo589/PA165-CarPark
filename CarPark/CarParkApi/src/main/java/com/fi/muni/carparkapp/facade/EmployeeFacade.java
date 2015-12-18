@@ -31,6 +31,8 @@ public interface EmployeeFacade {
      */
     void addEmployee(EmployeeDTO employee, String unencryptedPassword);
     
+    public void updateEmployee(EmployeeDTO employeeDTO);
+    
     /**
      * Get all employees
      * @return employees

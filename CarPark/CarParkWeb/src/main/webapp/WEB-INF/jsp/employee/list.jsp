@@ -35,6 +35,13 @@
                         <td class="col-md-2"><c:out value="${employee.address}" /></td>
                         <td class="col-md-2"><c:out value="${employee.telephone}" /></td>
                         <td class="col-md-2"><c:out value="${employee.admin}" /></td>
+                        
+                        <td class="col-md-1 col-lg-1">
+                                <a href="${pageContext.request.contextPath}/employee/detail/${employee.id}" class="btn btn-sm btn-warning">Delete</a>
+                            </td>
+                            <td class="col-md-1 col-lg-1">
+                                <a href="${pageContext.request.contextPath}/employee/update/${employee.id}" class="btn btn-sm btn-warning">Update</a>
+                            </td>
                     </tr>
                 </c:forEach>
             </tbody>

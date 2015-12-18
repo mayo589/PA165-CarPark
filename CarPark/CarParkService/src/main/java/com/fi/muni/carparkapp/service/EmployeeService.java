@@ -24,4 +24,6 @@ public interface EmployeeService {
     
     boolean isAdmin(Employee employee);
     
+    void update(Employee employee, String unencryptedPassword);
+    
 }

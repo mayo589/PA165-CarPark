@@ -1,5 +1,6 @@
 package com.fi.muni.carparkweb.controllers;
 
+import com.fi.muni.carparkapp.dto.CarDTO;
 import com.fi.muni.carparkapp.dto.EmployeeDTO;
 import com.fi.muni.carparkapp.facade.EmployeeFacade;
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,6 +63,35 @@ public class EmployeeController {
             return "redirect:" + uriBuilder.path("/employee/list").build().toUriString();
         }
         return "employee/detail";
+    }
+    
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public String edit(@PathVariable long id, @ModelAttribute("employeeUpdate") EmployeeDTO formBean, BindingResult bindingResult,
+                         Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
+        if (bindingResult.hasErrors()) {
+            for (FieldError fe : bindingResult.getFieldErrors()) {
+                model.addAttribute(fe.getField() + "_error", true);
+            }
+            return "employee/update/{id}";
+        };
+        formBean.setId(id);
+        employeeFacade.updateEmployee(formBean);
+        redirectAttributes.addFlashAttribute("alert_info", "Employee was updated "+formBean.getId()+formBean.getFirstName() + " " + formBean.getLastName()+ " " +id);
+        return "redirect:" + uriBuilder.path("/employee/list").build().toUriString();
+    }
+    
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String update(@PathVariable long id, Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
+        try {
+            EmployeeDTO c = employeeFacade.findEmployeeById(id);
+            c.setId(id);
+            model.addAttribute("employeeUpdate", c);
+        }
+        catch (Exception e) {
+            redirectAttributes.addFlashAttribute("alert_danger", "Employee " + id + " was not found.");
+            return "redirect:" + uriBuilder.path("/employee/list").build().toUriString();
+        }
+        return "employee/update";
     }
     
 }
