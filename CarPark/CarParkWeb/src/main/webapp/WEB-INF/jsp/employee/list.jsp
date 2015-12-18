@@ -5,42 +5,51 @@
 
 <my:pagetemplate title="Employees">
     <jsp:attribute name="body">
-        
+
         <div class="panel panel-default">
-        <div class="panel-heading">List of employees</div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>Date of birth</th>
-                    <th>Address</th>
-                    <th>Telephone</th>
-                    <th>Admin</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${employees}" var="employee">
-                    
-                    <fmt:formatDate value="${employee.dateOfBirth}" pattern="dd/MM/yyyy" var="empBirthDate" />
-                    
+            <div class="panel-heading">List of employees</div>
+            <table class="table">
+                <thead>
                     <tr>
-                        <td class="col-md-1">
+                        <th></th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Date of birth</th>
+                        <th>Address</th>
+                        <th>Telephone</th>
+                        <th>Admin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${employees}" var="employee">
+
+                        <fmt:formatDate value="${employee.dateOfBirth}" pattern="dd/MM/yyyy" var="empBirthDate" />
+
+                        <tr>
+                            <td class="col-md-1">
                                 <a href="${pageContext.request.contextPath}/employee/detail/${employee.id}" class="btn btn-sm btn-default">Detail</a>
-                        </td>
-                        <td class="col-md-2"><c:out value="${employee.firstName}" /></td>
-                        <td class="col-md-2"><c:out value="${employee.lastName}" /></td>
-                        <td class="col-md-2"><c:out value="${empBirthDate}" /></td>
-                        <td class="col-md-2"><c:out value="${employee.address}" /></td>
-                        <td class="col-md-2"><c:out value="${employee.telephone}" /></td>
-                        <td class="col-md-2"><c:out value="${employee.admin}" /></td>
+                            </td>
+                            <td class="col-md-2"><c:out value="${employee.firstName}" /></td>
+                            <td class="col-md-2"><c:out value="${employee.lastName}" /></td>
+                            <td class="col-md-2"><c:out value="${empBirthDate}" /></td>
+                            <td class="col-md-2"><c:out value="${employee.address}" /></td>
+                            <td class="col-md-2"><c:out value="${employee.telephone}" /></td>
+                            <td class="col-md-2"><c:out value="${employee.admin}" /></td>
+
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <td class="col-md-1 col-lg-1">
+                                <a href="${pageContext.request.contextPath}/employee/detail/${employee.id}" class="btn btn-sm btn-warning">Delete</a>
+                            </td>
+                            <td class="col-md-1 col-lg-1">
+                                <a href="${pageContext.request.contextPath}/employee/update/${employee.id}" class="btn btn-sm btn-warning">Update</a>
+                            </td>
+                        </sec:authorize>
                     </tr>
                 </c:forEach>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
         </div>
-        
+
         <div class="form-group row">
             <div class="col-md-2">
                 <a href="${pageContext.request.contextPath}/employee/new" class="btn btn-primary">

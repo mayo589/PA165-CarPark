@@ -38,6 +38,21 @@ public class CarController {
         return "car/new";
     }
     
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public String edit(@PathVariable long id, @ModelAttribute("carUpdate") CarDTO formBean, BindingResult bindingResult,
+                         Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
+        if (bindingResult.hasErrors()) {
+            for (FieldError fe : bindingResult.getFieldErrors()) {
+                model.addAttribute(fe.getField() + "_error", true);
+            }
+            return "redirect:" + uriBuilder.path("/car/update/{id}").build().toUriString(); 
+        };
+        formBean.setId(id);
+        carFacade.updateCar(formBean);
+        redirectAttributes.addFlashAttribute("alert_info", "Car was updated "+formBean.getId()+formBean.getVin()+id);
+        return "redirect:" + uriBuilder.path("/car/list").build().toUriString();
+    }
+    
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String updateCar(@PathVariable long id, Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
         try {
@@ -66,20 +81,7 @@ public class CarController {
         return "redirect:" + uriBuilder.path("/car/list").build().toUriString();
     }
     
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String edit(@PathVariable long id, @ModelAttribute("carUpdate") CarDTO formBean, BindingResult bindingResult,
-                         Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
-        if (bindingResult.hasErrors()) {
-            for (FieldError fe : bindingResult.getFieldErrors()) {
-                model.addAttribute(fe.getField() + "_error", true);
-            }
-            return "car/update/{id}";
-        };
-        formBean.setId(id);
-        carFacade.updateCar(formBean);
-        redirectAttributes.addFlashAttribute("alert_info", "Car was updated "+formBean.getId()+formBean.getVin()+id);
-        return "redirect:" + uriBuilder.path("/car/list").build().toUriString();
-    }
+    
     
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
     public String detail(@PathVariable long id, Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {

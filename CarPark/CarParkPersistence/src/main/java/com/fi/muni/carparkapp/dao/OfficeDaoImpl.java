@@ -84,5 +84,12 @@ public class OfficeDaoImpl implements OfficeDao {
         }
         em.remove(o);
     }
+
+    @Override
+    public void update(Office o) {
+        if(o == null)
+            throw new SimpleDataAccessException("employee cannot be null");
+        em.merge(o);
+    }
     
 }

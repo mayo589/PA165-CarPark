@@ -2,6 +2,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <my:pagetemplate title="Reservations">
     <jsp:attribute name="body">       
@@ -34,6 +35,14 @@
                             <td class="col-md-2"><c:out value="${reservation.employee.firstName}" /> &nbsp; <c:out value="${reservation.employee.lastName}" /></td>
                             <td class="col-md-2"><c:out value="${reservation.car.model}" /> &nbsp; <c:out value="${reservation.car.plateNumber}" /></td>
                             <td class="col-md-2"><c:out value="${reservation.cancelled}" /></td>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <td class="col-md-1 col-lg-1">
+                                    <a href="${pageContext.request.contextPath}/reservation/detail/${office.id}" class="btn btn-sm btn-warning">Delete</a>
+                                </td>
+                                <td class="col-md-1 col-lg-1">
+                                    <a href="${pageContext.request.contextPath}/reservation/update/${office.id}" class="btn btn-sm btn-warning">Update</a>
+                                </td>
+                            </sec:authorize>
                         </tr>
                     </c:forEach>
                 </tbody>

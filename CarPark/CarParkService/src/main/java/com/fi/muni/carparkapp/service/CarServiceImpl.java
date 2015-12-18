@@ -69,7 +69,7 @@ public class CarServiceImpl implements CarService{
             {
                 for(Car c : allCars)
                 {
-                    if(c.getVin() == res.getCar().getVin()){
+                    if(c.getVin() == null ? res.getCar().getVin() == null : c.getVin().equals(res.getCar().getVin())){
                         allCars.remove(c);
                         break;
                     }
