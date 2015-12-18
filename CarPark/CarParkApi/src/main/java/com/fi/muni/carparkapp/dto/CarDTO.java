@@ -25,6 +25,16 @@ public class CarDTO {
     
     private int fuelCapacity;
 
+    private boolean isAvailable;
+
+    public boolean isIsAvailable() {
+        return isAvailable;
+    }
+
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+    
     public Long getId() {
         return id;
     }

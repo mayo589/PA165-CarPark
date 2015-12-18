@@ -145,12 +145,8 @@ public class ReservationController {
     protected void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
-      //  binder.registerCustomEditor(CarDTO.class, new CustomCarEditor);
-      //  binder.registerCustomEditor(EmployeeDTO.class, new CustomDateEditor(dateFormat, false));
-       // binder.registerCustomEditor(OfficeDTO.class, new CustomDateEditor(dateFormat, false));
-        
-        
     }
+    
     private boolean hasRole(String role) {
         Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>)
                 SecurityContextHolder.getContext().getAuthentication().getAuthorities();

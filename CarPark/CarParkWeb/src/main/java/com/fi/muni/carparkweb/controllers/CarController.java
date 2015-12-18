@@ -97,27 +97,11 @@ public class CarController {
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
-         model.addAttribute("cars", carFacade.getAllCars());
-        return "car/list";
-    }
-    
-    @RequestMapping(value = "/availableCars", method = RequestMethod.GET)
-    public String listAvailable(Model model) {
-         model.addAttribute("cars", carFacade.getAllAvailableCars());
-        return "car/availableCars";
-    }
-    
-    @RequestMapping(value = "/availabilityOfCar/{id}", method = RequestMethod.POST)
-    public String availabilityOfCar(@PathVariable("id") long id, UriComponentsBuilder uriBuilder, RedirectAttributes redirectAttributes) {
-        CarDTO car = carFacade.getCarById(id);
-        boolean available = false;
-        List<CarDTO> availableCars = carFacade.getAllAvailableCars();
-        for(CarDTO c : availableCars){
-            if(c.getId() == id){
-                available = true;
-                break;
-            }
+        List<CarDTO> cars = carFacade.getAllCars();
+        for(CarDTO c : cars){
+            c.setIsAvailable(carFacade.isAvailable(c));
         }
-        return "redirect:" + uriBuilder.path("/car/list").queryParam("available",available).build().toUriString();
+        model.addAttribute("cars", cars);
+        return "car/list";
     }
 }

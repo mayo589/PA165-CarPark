@@ -13,7 +13,6 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Id</th>>
                         <th>From date</th>
                         <th>To date</th>
                         <th>Employee name</th>
@@ -31,7 +30,6 @@
                             <td class="col-md-1">
                                 <a href="${pageContext.request.contextPath}/reservation/detail/${reservation.id}" class="btn btn-sm btn-default">Detail</a>
                             </td>
-                            <td class="col-md-2"><c:out value="${reservation.id}" /></td>
                             <td class="col-md-2"><c:out value="${resFromDate}" /></td>
                             <td class="col-md-2"><c:out value="${resToDate}" /></td>
                             <td class="col-md-2"><c:out value="${reservation.employee.firstName}" /> &nbsp; <c:out value="${reservation.employee.lastName}" /></td>
