@@ -33,9 +33,11 @@
                 <form:checkbox path="admin" />
             </div>
             <div>
-                <form:label path="password">Password:</form:label>
-                <form:input path="password" />
+                <form:label path="passwordHash">Password:</form:label>
+                <form:input path="passwordHash" />
             </div>
+            
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button type="submit">Create</button>
         </form:form>
     </jsp:attribute>

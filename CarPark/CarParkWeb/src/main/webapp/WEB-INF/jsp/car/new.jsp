@@ -53,6 +53,8 @@
                 </div>
             </div>
             <a href="${pageContext.request.contextPath}/car/list" class="btn btn-danger">Back</a>
+            
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button class="btn btn-primary" type="submit">Create car</button>
         </form:form>
 
