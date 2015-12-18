@@ -53,6 +53,10 @@ public class Car {
     public void setVin(String vin) {
         this.vin = vin;
     }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getModel() {
         return model;

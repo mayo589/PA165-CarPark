@@ -8,8 +8,14 @@
 <my:pagetemplate title="Update car">
     <jsp:attribute name="body">
 
-        <form:form method="post" action="${pageContext.request.contextPath}/car/edit"
-                   modelAttribute="carUpdate" cssClass="form-horizontal">
+        <form:form method="post" action="${pageContext.request.contextPath}/car/edit/${id}" modelAttribute="carUpdate" cssClass="form-horizontal">
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="id" cssClass="col-sm-1 control-label">ID</form:label>
+                <div class="col-sm-4">
+                <form:input path="id" cssClass="form-control" disabled="true"/>
+                    <form:errors path="id" cssClass="help-block"/>
+                </div>
+            </div>
             <div class="form-group ${isbn_error?'has-error':''}">
                 <form:label path="model" cssClass="col-sm-1 control-label">Model</form:label>
                 <div class="col-sm-4">

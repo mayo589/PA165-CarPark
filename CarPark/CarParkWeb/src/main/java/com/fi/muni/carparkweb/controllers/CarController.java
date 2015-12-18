@@ -4,6 +4,7 @@ import com.fi.muni.carparkapp.dto.CarDTO;
 import com.fi.muni.carparkapp.facade.CarFacade;
 import com.fi.muni.carparkapp.service.config.ServiceConfiguration;
 import java.util.List;
+import java.util.Objects;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
@@ -40,7 +41,9 @@ public class CarController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String updateCar(@PathVariable long id, Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
         try {
-            model.addAttribute("carUpdate", carFacade.getCarById(id));
+            CarDTO c = carFacade.getCarById(id);
+            c.setId(id);
+            model.addAttribute("carUpdate", c);
         }
         catch (Exception e) {
             redirectAttributes.addFlashAttribute("alert_danger", "Car " + id + " was not found.");
@@ -51,7 +54,7 @@ public class CarController {
     
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@Valid @ModelAttribute("carCreate") CarDTO formBean, BindingResult bindingResult,
-                         Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
+                         Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder)   {
         if (bindingResult.hasErrors()) {
             for (FieldError fe : bindingResult.getFieldErrors()) {
                 model.addAttribute(fe.getField() + "_error", true);
@@ -63,17 +66,18 @@ public class CarController {
         return "redirect:" + uriBuilder.path("/car/list").build().toUriString();
     }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@Valid @ModelAttribute("carUpdate") CarDTO formBean, BindingResult bindingResult,
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public String edit(@PathVariable long id, @ModelAttribute("carUpdate") CarDTO formBean, BindingResult bindingResult,
                          Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
         if (bindingResult.hasErrors()) {
             for (FieldError fe : bindingResult.getFieldErrors()) {
                 model.addAttribute(fe.getField() + "_error", true);
             }
             return "car/update/{id}";
-        }
+        };
+        formBean.setId(id);
         carFacade.updateCar(formBean);
-        redirectAttributes.addFlashAttribute("alert_info", "Car was updated");
+        redirectAttributes.addFlashAttribute("alert_info", "Car was updated "+formBean.getId()+formBean.getVin()+id);
         return "redirect:" + uriBuilder.path("/car/list").build().toUriString();
     }
     
