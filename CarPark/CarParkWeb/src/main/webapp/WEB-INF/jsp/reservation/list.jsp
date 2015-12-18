@@ -27,7 +27,8 @@
                         
                         <tr>
                             <td class="col-md-1">
-                                <a href="${pageContext.request.contextPath}/reservation/detail/${reservation.id}" class="btn btn-sm btn-default">Detail</a></td>
+                                <a href="${pageContext.request.contextPath}/reservation/detail/${reservation.id}" class="btn btn-sm btn-default">Detail</a>
+                            </td>
                             <td class="col-md-2"><c:out value="${resFromDate}" /></td>
                             <td class="col-md-2"><c:out value="${resToDate}" /></td>
                             <td class="col-md-2"><c:out value="${reservation.employee.firstName}" /> &nbsp; <c:out value="${reservation.employee.lastName}" /></td>

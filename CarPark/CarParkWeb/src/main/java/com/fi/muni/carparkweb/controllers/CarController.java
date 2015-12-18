@@ -37,6 +37,18 @@ public class CarController {
         return "car/new";
     }
     
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String updateCar(@PathVariable long id, Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
+        try {
+            model.addAttribute("carUpdate", carFacade.getCarById(id));
+        }
+        catch (Exception e) {
+            redirectAttributes.addFlashAttribute("alert_danger", "Car " + id + " was not found.");
+            return "redirect:" + uriBuilder.path("/car/list").build().toUriString();
+        }
+        return "car/update";
+    }
+    
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@Valid @ModelAttribute("carCreate") CarDTO formBean, BindingResult bindingResult,
                          Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
@@ -48,6 +60,20 @@ public class CarController {
         }
         carFacade.addCar(formBean);
         redirectAttributes.addFlashAttribute("alert_info", "Car was created");
+        return "redirect:" + uriBuilder.path("/car/list").build().toUriString();
+    }
+    
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String edit(@Valid @ModelAttribute("carUpdate") CarDTO formBean, BindingResult bindingResult,
+                         Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
+        if (bindingResult.hasErrors()) {
+            for (FieldError fe : bindingResult.getFieldErrors()) {
+                model.addAttribute(fe.getField() + "_error", true);
+            }
+            return "car/update/{id}";
+        }
+        carFacade.updateCar(formBean);
+        redirectAttributes.addFlashAttribute("alert_info", "Car was updated");
         return "redirect:" + uriBuilder.path("/car/list").build().toUriString();
     }
     
