@@ -5,18 +5,26 @@
 
 <my:pagetemplate title="New office">
     <jsp:attribute name="body">
-        <h1>New office</h1>
         <form:form method="post" action="${pageContext.request.contextPath}/office/create"
-                   modelAttribute="officeCreate">
-            <div>
-                <form:label path="name">Name:</form:label>
-                <form:input path="name" />
+                   modelAttribute="officeCreate" cssClass="form-horizontal">
+            
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="name" cssClass="col-sm-1 control-label">Name:</form:label>
+                <div class="col-sm-4">
+                    <form:input path="name" class="form-control"/>
+                    <form:errors path="name" cssClass="help-block"/>
+                </div>
             </div>
-            <div>
-                <form:label path="address">Address:</form:label>
-                <form:input path="address" />
+            
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="address" cssClass="col-sm-1 control-label">Address:</form:label>
+                <div class="col-sm-4">
+                    <form:input path="address" class="form-control"/>
+                    <form:errors path="address" cssClass="help-block"/>
+                </div>
             </div>
-            <button type="submit">Create</button>
+            <a href="${pageContext.request.contextPath}/office/list" class="btn btn-danger">Back</a>
+            <button class="btn btn-primary" type="submit">Create office</button>
         </form:form>
     </jsp:attribute>
 </my:pagetemplate>

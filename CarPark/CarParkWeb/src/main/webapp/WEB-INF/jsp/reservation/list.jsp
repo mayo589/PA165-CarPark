@@ -6,15 +6,12 @@
 <my:pagetemplate title="Reservations">
     <jsp:attribute name="body">       
         
-        <a href="${pageContext.request.contextPath}/reservation/new">New</a>
-        <br />
-        <h1>List of reservations</h1>
-        <div class="CSSTableGenerator">
-            <table>
+        <div class="panel panel-default">
+        <div class="panel-heading">List of reservations</div>
+            <table class="table">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Id</th>
                         <th>From date</th>
                         <th>To date</th>
                         <th>Employee name</th>
@@ -29,17 +26,26 @@
                         <fmt:formatDate value="${reservation.toDate}" pattern="dd/MM/yyyy" var="resToDate" />
                         
                         <tr>
-                            <td><a href="${pageContext.request.contextPath}/reservation/detail/${reservation.id}">Detail</a></td>
-                            <td>${reservation.id}</td>
-                            <td><c:out value="${resFromDate}" /></td>
-                            <td><c:out value="${resToDate}" /></td>
-                            <td><c:out value="${reservation.employee.firstName}" /> &nbsp; <c:out value="${reservation.employee.lastName}" /></td>
-                            <td><c:out value="${reservation.car.model}" /> &nbsp; <c:out value="${reservation.car.plateNumber}" /></td>
-                            <td><c:out value="${reservation.cancelled}" /></td>
+                            <td class="col-md-1">
+                                <a href="${pageContext.request.contextPath}/reservation/detail/${reservation.id}" class="btn btn-sm btn-default">Detail</a></td>
+                            <td class="col-md-2"><c:out value="${resFromDate}" /></td>
+                            <td class="col-md-2"><c:out value="${resToDate}" /></td>
+                            <td class="col-md-2"><c:out value="${reservation.employee.firstName}" /> &nbsp; <c:out value="${reservation.employee.lastName}" /></td>
+                            <td class="col-md-2"><c:out value="${reservation.car.model}" /> &nbsp; <c:out value="${reservation.car.plateNumber}" /></td>
+                            <td class="col-md-2"><c:out value="${reservation.cancelled}" /></td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-md-2">
+                <a href="${pageContext.request.contextPath}/reservation/new" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Add a new reservation
+                </a>
+            </div>
         </div>
     </jsp:attribute>
 </my:pagetemplate>

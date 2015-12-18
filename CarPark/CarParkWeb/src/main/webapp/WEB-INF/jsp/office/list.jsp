@@ -4,11 +4,10 @@
 
 <my:pagetemplate title="Offices">
     <jsp:attribute name="body">
-        <h1>List of offices</h1>
-        <a href="${pageContext.request.contextPath}/office/new">New</a>
         
-        <div class="CSSTableGenerator">
-        <table>
+        <div class="panel panel-default">
+        <div class="panel-heading">List of offices</div>
+        <table class="table">
             <thead>
                 <tr>
                     <th></th>
@@ -20,16 +19,25 @@
             <tbody>
                 <c:forEach items="${offices}" var="office">
                     <tr>
-                        <td>
-                            <a href="${pageContext.request.contextPath}/office/detail/${office.id}" class="btn btn-info btn-block">Detail</a>
+                        <td class="col-md-1">
+                            <a class="btn btn-sm btn-default" href="${pageContext.request.contextPath}/office/detail/${office.id}">Detail</a>
                         </td>
-                        <td>${office.id}</td>
-                        <td><c:out value="${office.name}" /></td>
-                        <td><c:out value="${office.address}" /></td>
+                        <td class="col-md-2">${office.id}</td>
+                        <td class="col-md-2"><c:out value="${office.name}" /></td>
+                        <td class="col-md-2"><c:out value="${office.address}" /></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-md-2">
+                <a href="${pageContext.request.contextPath}/office/new" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Add a new office
+                </a>
+            </div>
         </div>
     </jsp:attribute>
 </my:pagetemplate>
