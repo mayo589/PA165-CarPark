@@ -40,6 +40,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setPasswordHash(new BCryptPasswordEncoder().encode(unencryptedPassword));
         employeeDao.create(employee);
     }
+    
+    @Override
+    public void update(Employee employee, String unencryptedPassword) {
+        employee.setPasswordHash(new BCryptPasswordEncoder().encode(unencryptedPassword));
+        employeeDao.update(employee);
+    }
 
     @Override
     public List<Employee> getAllEmployees() {

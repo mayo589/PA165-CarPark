@@ -1,7 +1,9 @@
 package com.fi.muni.carparkapp.service.facade;
 
+import com.fi.muni.carparkapp.dto.CarDTO;
 import com.fi.muni.carparkapp.dto.EmployeeAuthenticateDTO;
 import com.fi.muni.carparkapp.dto.EmployeeDTO;
+import com.fi.muni.carparkapp.entity.Car;
 import com.fi.muni.carparkapp.entity.Employee;
 import com.fi.muni.carparkapp.facade.EmployeeFacade;
 import com.fi.muni.carparkapp.service.BeanMappingService;
@@ -42,6 +44,12 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
         Employee employeeEntity = beanMappingService.mapTo(employee, Employee.class);
         employeeService.addEmployee(employeeEntity, unencryptedPassword);
         employee.setId(employeeEntity.getId());
+    }
+    
+    @Override
+    public void updateEmployee(EmployeeDTO employeeDTO) {
+        Employee emp = beanMappingService.mapTo(employeeDTO, Employee.class);
+        employeeService.update(emp, employeeDTO.getPasswordHash()); // this is right
     }
 
     @Override
