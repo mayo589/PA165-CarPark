@@ -1,9 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <my:pagetemplate title="Employee">
     <jsp:attribute name="body">
+        
+        <fmt:formatDate value="${employee.dateOfBirth}" pattern="dd/MM/yyyy" var="empBirthDate" />
+        
         <table class="table">
             <tr>
                 <td class="col-md-2"><b>First name:</b></td>
@@ -15,7 +19,7 @@
             </tr>
             <tr>
                 <td class="col-md-2"><b>Date of birth:</b></td>
-                <td>${employee.dateOfBirth}</td>
+                <td>${empBirthDate}</td>
             </tr>
             <tr>
                 <td class="col-md-2"><b>Address:</b></td>

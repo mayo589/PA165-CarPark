@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -48,6 +49,18 @@ public class EmployeeController {
         }
         employeeFacade.addEmployee(formBean, formBean.getPasswordHash());
         return "redirect:" + uriBuilder.path("/employee/list").build().toUriString();
+    }
+    
+    @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+    public String detail(@PathVariable long id, Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
+        try {
+            model.addAttribute("employee", employeeFacade.findEmployeeById(id));
+        }
+        catch (Exception e) {
+            redirectAttributes.addFlashAttribute("alert_danger", "Employee " + id + " was not found.");
+            return "redirect:" + uriBuilder.path("/employee/list").build().toUriString();
+        }
+        return "employee/detail";
     }
     
 }
