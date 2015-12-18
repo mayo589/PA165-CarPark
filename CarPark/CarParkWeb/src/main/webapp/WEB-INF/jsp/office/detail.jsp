@@ -18,18 +18,6 @@
                 <td>${office.address}</td>
             </tr>
             <tr>
-                <td class="col-md-2"><b>Reservations</b></td>
-                <td>
-                    <table>
-                        <c:forEach items="${office.reservations}" var="reservation">
-                            <tr>
-                                <td>${reservation.id}</td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                </td>
-            </tr>
-            <tr>
                 <td><input type="button" value="Back" onclick="history.go(-1)" class="btn btn-danger"></td>
             </tr>
         </table>

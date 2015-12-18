@@ -51,6 +51,7 @@ public class SampleDataLoadingFacade {
         
         Reservation res1 = reservation(false, getDate(2012, 2, 1), getDate(2012, 3, 1), car1, office1 , karel);
         Reservation res2 = reservation(false, getDate(2012, 2, 2), getDate(2016, 3, 1), mazda6, office1 , jan);
+        Reservation res3 = reservation(true, getDate(2012, 2, 2), getDate(2016, 3, 1), mazda3, office1 , jan);
         
     }
     

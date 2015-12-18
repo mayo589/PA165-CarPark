@@ -134,6 +134,13 @@ public class ReservationController {
         return "redirect:" + uriBuilder.path("/reservation/list").build().toUriString();
     }
     
+    @RequestMapping(value = "/cancel/{id}", method = RequestMethod.POST)
+    public String cancel(@PathVariable("id") long id, UriComponentsBuilder uriBuilder) {
+        ReservationDTO reservation = reservationFacade.getReservationById(id);
+        reservationFacade.cancelReservation(reservation);
+        return "redirect:" + uriBuilder.path("/reservation/list").build().toUriString();
+    }
+    
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");

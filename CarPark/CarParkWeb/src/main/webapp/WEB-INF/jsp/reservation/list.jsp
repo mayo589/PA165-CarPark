@@ -13,6 +13,7 @@
                 <thead>
                     <tr>
                         <th></th>
+                        <th>Id</th>>
                         <th>From date</th>
                         <th>To date</th>
                         <th>Employee name</th>
@@ -30,19 +31,20 @@
                             <td class="col-md-1">
                                 <a href="${pageContext.request.contextPath}/reservation/detail/${reservation.id}" class="btn btn-sm btn-default">Detail</a>
                             </td>
+                            <td class="col-md-2"><c:out value="${reservation.id}" /></td>
                             <td class="col-md-2"><c:out value="${resFromDate}" /></td>
                             <td class="col-md-2"><c:out value="${resToDate}" /></td>
                             <td class="col-md-2"><c:out value="${reservation.employee.firstName}" /> &nbsp; <c:out value="${reservation.employee.lastName}" /></td>
                             <td class="col-md-2"><c:out value="${reservation.car.model}" /> &nbsp; <c:out value="${reservation.car.plateNumber}" /></td>
                             <td class="col-md-2"><c:out value="${reservation.cancelled}" /></td>
-                            <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                <td class="col-md-1 col-lg-1">
-                                    <a href="${pageContext.request.contextPath}/reservation/detail/${office.id}" class="btn btn-sm btn-warning">Delete</a>
-                                </td>
-                                <td class="col-md-1 col-lg-1">
-                                    <a href="${pageContext.request.contextPath}/reservation/update/${office.id}" class="btn btn-sm btn-warning">Update</a>
-                                </td>
-                            </sec:authorize>
+                            <td class="col-md-1 col-lg-1">
+                                <c:if test="${not reservation.cancelled}">
+                                    <form class="btn-sm btn-danger form-just-with-button" method="post" action="${pageContext.request.contextPath}/reservation/cancel/${reservation.id}">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                        <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
+                                    </form>
+                                </c:if>
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>
