@@ -74,9 +74,10 @@
                     <form:errors path="passwordHash" cssClass="help-block"/>
                 </div>
             </div>
-
+            <a href="${pageContext.request.contextPath}/employee/list" class="btn btn-danger">Back</a>
+            
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-            <button type="submit">Update</button>
+            <button class="btn btn-primary" type="submit">Update</button>
         </form:form>
 
     </jsp:attribute>
