@@ -5,10 +5,16 @@
  */
 package com.fi.muni.carparkweb.controllers;
 
+import com.fi.muni.carparkapp.dto.EmployeeDTO;
 import com.fi.muni.carparkapp.dto.ReservationDTO;
+import com.fi.muni.carparkapp.facade.EmployeeFacade;
 import com.fi.muni.carparkapp.facade.ReservationFacade;
+import java.util.Collection;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,9 +37,17 @@ public class ReservationController {
     @Autowired
     private ReservationFacade reservationFacade;
     
+    @Autowired
+    private EmployeeFacade employeeFacade;
+    
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
-        model.addAttribute("reservations", reservationFacade.getAllReservations());
+        if (hasRole("ROLE_ADMIN")) {
+            model.addAttribute("reservations", reservationFacade.getAllReservations());
+        } else {
+            EmployeeDTO employee = employeeFacade.findEmployeeByName(getPrincipal());
+            model.addAttribute("reservations", reservationFacade.getAllReservationsForEmployee(employee));
+        }
         return "reservation/list";
     }
     
@@ -64,6 +78,31 @@ public class ReservationController {
         }
         reservationFacade.addReservation(formBean);
         return "redirect:" + uriBuilder.path("/reservation/list").build().toUriString();
+    }
+    
+    private boolean hasRole(String role) {
+        Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>)
+                SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        boolean hasRole = false;
+        for (GrantedAuthority authority : authorities) {
+            hasRole = authority.getAuthority().equals(role);
+            if (hasRole) {
+                break;
+            }
+        }
+        return hasRole;
+    }
+    
+    private String getPrincipal() {
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        } else {
+            userName = "";//principal.toString();
+        }
+        return userName;
     }
     
 }

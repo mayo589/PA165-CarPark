@@ -47,6 +47,7 @@ public class SampleDataLoadingFacade {
         Car mazdaCX5 = car("White", 99, "Mazda CX5", "CC-155", "XCR-DFWRPOIH46ASF");
         
         Reservation res1 = reservation(false, getDate(2012, 2, 1), getDate(2012, 3, 1), car1, null , karel);
+        Reservation res2 = reservation(false, getDate(2012, 2, 2), getDate(2012, 3, 1), mazda6, null , jan);
         
         Office office1 = office("Brno, Hrnčířská 15", "Brno - Královo pole", res1);
     }

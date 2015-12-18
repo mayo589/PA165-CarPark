@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/employee/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/car/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/office/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-                .antMatchers("/reservation/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/reservation/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .and().formLogin().loginPage("/login")//.successHandler(customSuccessHandler)
                 .usernameParameter("username").passwordParameter("password")
                 .and().csrf()
