@@ -69,6 +69,37 @@ public class ReservationDTO {
     
     private boolean cancelled;
 
+    private Long carid;
+    
+    private Long employeeid;
+    
+    private Long officeid;
+
+    public Long getCarid() {
+        return carid;
+    }
+
+    public void setCarid(Long carid) {
+        this.carid = carid;
+    }
+
+    public Long getEmployeeid() {
+        return employeeid;
+    }
+
+    public void setEmployeeid(Long employeeid) {
+        this.employeeid = employeeid;
+    }
+
+    public Long getOfficeid() {
+        return officeid;
+    }
+
+    public void setOfficeid(Long officeid) {
+        this.officeid = officeid;
+    }
+
+    
     public boolean isCancelled() {
         return cancelled;
     }

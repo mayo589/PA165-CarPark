@@ -46,10 +46,12 @@ public class SampleDataLoadingFacade {
         Car mazda3 = car("Black", 89, "Mazda 3", "BC-784", "XCR-DDFGFJH446ASF");
         Car mazdaCX5 = car("White", 99, "Mazda CX5", "CC-155", "XCR-DFWRPOIH46ASF");
         
-        Reservation res1 = reservation(false, getDate(2012, 2, 1), getDate(2012, 3, 1), car1, null , karel);
-        Reservation res2 = reservation(false, getDate(2012, 2, 2), getDate(2016, 3, 1), mazda6, null , jan);
         
-        Office office1 = office("Brno, Hrnčířská 15", "Brno - Královo pole", res1);
+        Office office1 = office("Brno, Hrnčířská 15", "Brno - Královo pole", null);
+        
+        Reservation res1 = reservation(false, getDate(2012, 2, 1), getDate(2012, 3, 1), car1, office1 , karel);
+        Reservation res2 = reservation(false, getDate(2012, 2, 2), getDate(2016, 3, 1), mazda6, office1 , jan);
+        
     }
     
     private Employee employee(String lastName, String firstName, String address,
@@ -71,7 +73,7 @@ public class SampleDataLoadingFacade {
         r.setFromDate(fromDate);
         r.setToDate(toDate);
         r.setCar(car);
-        //r.setOffice(office);
+        r.setOffice(office);
         r.setEmployee(employee);
         reservationService.addReservation(r);
         return r;
@@ -92,7 +94,7 @@ public class SampleDataLoadingFacade {
         Office o = new Office();
         o.setAddress(address);
         o.setName(name);
-        o.addReservation(reservation);
+        //o.addReservation(reservation);
         officeService.AddOffice(o);
         return o;
     }

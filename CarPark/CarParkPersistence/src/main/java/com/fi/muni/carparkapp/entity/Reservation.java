@@ -30,17 +30,17 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE )
     @NotNull
     private Employee employee;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,  cascade = CascadeType.MERGE )
     @NotNull
     private Car car;
 
-    /*@ManyToOne(optional = false)
+    @ManyToOne(optional = false,  cascade = CascadeType.ALL )
     @NotNull
-    private Office office;*/
+    private Office office;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -87,6 +87,14 @@ public class Reservation {
 
     public Reservation(Long id) {
         this.id = id;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
     }
 
     public Reservation() {

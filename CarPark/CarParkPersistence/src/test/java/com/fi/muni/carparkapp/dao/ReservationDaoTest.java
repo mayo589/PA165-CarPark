@@ -84,7 +84,7 @@ public class ReservationDaoTest extends AbstractTestNGSpringContextTests{
         res1.setToDate(new Date());
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        //res1.setOffice(office1);
+        res1.setOffice(office1);
         reservationDao.create(res1);
         
         List<Reservation> reservations = reservationDao.findAll();
@@ -95,7 +95,7 @@ public class ReservationDaoTest extends AbstractTestNGSpringContextTests{
         res2.setToDate(new Date());
         res2.setEmployee(employee1);
         res2.setCar(car1);
-        //res2.setOffice(office1);
+        res2.setOffice(office1);
         reservationDao.create(res2);
         
         List<Reservation> reservations2 = reservationDao.findAll();
@@ -109,7 +109,7 @@ public class ReservationDaoTest extends AbstractTestNGSpringContextTests{
         res1.setToDate(new Date());
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        //res1.setOffice(office1);
+        res1.setOffice(office1);
         reservationDao.create(res1);
         
         Reservation found = reservationDao.findById(res1.getId());
@@ -123,7 +123,7 @@ public class ReservationDaoTest extends AbstractTestNGSpringContextTests{
         res1.setToDate(new Date());
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        //res1.setOffice(office1);
+        res1.setOffice(office1);
         reservationDao.create(res1);
         
         List<Reservation> foundReservations = reservationDao.findByEmployee(res1.getEmployee());
@@ -137,7 +137,7 @@ public class ReservationDaoTest extends AbstractTestNGSpringContextTests{
         res1.setToDate(new Date());
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        //res1.setOffice(office1);
+        res1.setOffice(office1);
         reservationDao.create(res1);
         
         List<Reservation> foundReservations = reservationDao.findByCar(res1.getCar());
@@ -165,7 +165,7 @@ public class ReservationDaoTest extends AbstractTestNGSpringContextTests{
         res1.setToDate(new Date());
         res1.setEmployee(employee1);
         res1.setCar(car1);
-        //res1.setOffice(office1);
+        res1.setOffice(office1);
         reservationDao.create(res1);
         reservationDao.delete(res1);
         Reservation found = reservationDao.findById(res1.getId());

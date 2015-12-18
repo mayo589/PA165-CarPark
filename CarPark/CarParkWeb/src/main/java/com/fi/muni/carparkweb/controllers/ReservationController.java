@@ -63,8 +63,6 @@ public class ReservationController {
     
     @Autowired
     private OfficeFacade officeFacade;
-    @Autowired
-    private EmployeeFacade employeeFacade;
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
@@ -99,7 +97,7 @@ public class ReservationController {
     public List<CarDTO> carsList(){
         return carFacade.getAllAvailableCars();
     }
-    
+   
     @ModelAttribute("offices")
     public List<OfficeDTO> officesList(){
         return (List)officeFacade.getAllOffices();
@@ -114,19 +112,24 @@ public class ReservationController {
     
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createOffice(@Valid @ModelAttribute("reservationCreate") ReservationDTO formBean,
-            @RequestParam String carId, 
-             /*@ModelAttribute("carId") Long carId,
-             @ModelAttribute("employeeId") Long employeeId,
-             @ModelAttribute("officeId") Long officeId,*/
+             @ModelAttribute("carid") Long carid,
+             @ModelAttribute("employeeid") Long employeeid,
+             @ModelAttribute("officeid") Long officeid,
             BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes,
             UriComponentsBuilder uriBuilder) {
         if (bindingResult.hasErrors()) {
             return "reservation/new";
         }
-
-        formBean.setCar(carFacade.getCarById(Long.parseLong(carId, 10)));
-       // formBean.setEmployee(employeeFacade.findEmployeeById(employeeId));
-      //  formBean.setOffice(officeFacade.findOfficeById(officeId));
+        CarDTO c = carFacade.getCarById(carid);
+        c.setId(carid);
+        OfficeDTO o = officeFacade.findOfficeById(officeid);
+        o.setId(officeid);
+        EmployeeDTO e = employeeFacade.findEmployeeById(employeeid);
+        e.setId(employeeid);
+        
+        formBean.setCar(c);
+        formBean.setOffice(o);
+        formBean.setEmployee(e);
         reservationFacade.addReservation(formBean);
         return "redirect:" + uriBuilder.path("/reservation/list").build().toUriString();
     }
@@ -135,6 +138,11 @@ public class ReservationController {
     protected void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+      //  binder.registerCustomEditor(CarDTO.class, new CustomCarEditor);
+      //  binder.registerCustomEditor(EmployeeDTO.class, new CustomDateEditor(dateFormat, false));
+       // binder.registerCustomEditor(OfficeDTO.class, new CustomDateEditor(dateFormat, false));
+        
+        
     }
     private boolean hasRole(String role) {
         Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>)
