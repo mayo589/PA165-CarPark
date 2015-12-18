@@ -34,6 +34,7 @@
                     <li class="${pageContext.request.requestURI.contains("/office") ? 'active' : ''}"><a href="${pageContext.request.contextPath}/office/list">Offices</a></li>
                     <li class="${pageContext.request.requestURI.contains("/employee") ? 'active' : ''}"><a href="${pageContext.request.contextPath}/employee/list">Employees</a></li>
                     <li class="${pageContext.request.requestURI.contains("/reservation") ? 'active' : ''}"><a href="${pageContext.request.contextPath}/reservation/list">Reservations</a></li>
+                    <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
                 </ul>
              </div>
         </div>

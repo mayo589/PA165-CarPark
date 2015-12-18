@@ -33,11 +33,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
-                .usernameParameter("ssoId").passwordParameter("password")
+                .antMatchers("/logout").permitAll()
+                .antMatchers("/employee/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/car/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/office/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/reservation/**").access("hasRole('ROLE_ADMIN')")
+                .and().formLogin().loginPage("/login")//.successHandler(customSuccessHandler)
+                .usernameParameter("username").passwordParameter("password")
                 .and().csrf()
                 .and().exceptionHandling().accessDeniedPage("/Access_Denied");
     }

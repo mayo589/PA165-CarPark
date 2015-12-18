@@ -17,13 +17,8 @@ public class HomepageController {
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Model model) {
-        return "home";
-    }
-    
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String adminPage(Model model) {
         model.addAttribute("user", getPrincipal());
-        return "admin";
+        return "home";
     }
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -53,7 +48,7 @@ public class HomepageController {
         if (principal instanceof UserDetails) {
             userName = ((UserDetails)principal).getUsername();
         } else {
-            userName = principal.toString();
+            userName = "";//principal.toString();
         }
         return userName;
     }

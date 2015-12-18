@@ -1,14 +1,10 @@
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Login page</title>
-    </head>
- 
-    <body>
-        <h1>CarPark</h1>
+<my:pagetemplate>
+    <jsp:attribute name="body">
+        
         <div id="mainWrapper">
             <div class="login-container">
                 <div class="login-card">
@@ -27,7 +23,7 @@
                             </c:if>
                             <div class="input-group input-sm">
                                 <label class="input-group-addon" for="username"><i class="fa fa-user"></i></label>
-                                <input type="text" class="form-control" id="username" name="ssoId" placeholder="Enter Username" required>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
                             </div>
                             <div class="input-group input-sm">
                                 <label class="input-group-addon" for="password"><i class="fa fa-lock"></i></label> 
@@ -44,6 +40,6 @@
                 </div>
             </div>
         </div>
- 
-    </body>
-</html>
+                            
+    </jsp:attribute>
+</my:pagetemplate>
