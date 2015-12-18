@@ -38,9 +38,6 @@
 
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
                             <td class="col-md-1 col-lg-1">
-                                <a href="${pageContext.request.contextPath}/employee/detail/${employee.id}" class="btn btn-sm btn-warning">Delete</a>
-                            </td>
-                            <td class="col-md-1 col-lg-1">
                                 <a href="${pageContext.request.contextPath}/employee/update/${employee.id}" class="btn btn-sm btn-warning">Update</a>
                             </td>
                         </sec:authorize>
