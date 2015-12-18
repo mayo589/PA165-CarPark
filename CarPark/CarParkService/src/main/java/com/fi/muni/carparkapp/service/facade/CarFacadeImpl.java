@@ -68,4 +68,16 @@ public class CarFacadeImpl implements CarFacade{
         return beanMappingService.mapTo(carService.findById(id),CarDTO.class);
     }
     
+    @Override
+    public boolean isAvailable(CarDTO car){
+       boolean available = false;
+        List<CarDTO> availableCars = getAllAvailableCars();
+        for(CarDTO c : availableCars){
+            if(c.getId() == car.getId()){
+                available = true;
+                break;
+            }
+        }
+        return available;
+    }
 }

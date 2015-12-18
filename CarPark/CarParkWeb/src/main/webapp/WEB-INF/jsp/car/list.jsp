@@ -35,16 +35,14 @@
                             <td class="col-md-2"><c:out value="${car.fuelCapacity}"/></td>
                             <td class="col-md-2"><c:out value="${car.plateNumber}"/></td>
                             <td class="col-md-2">
-                                <form method="post" action="${pageContext.request.contextPath}/car/availabilityOfCar/${car.id}">
-                                    <c:choose>
-                                        <c:when test="${empty param.available || param.available}">
-                                            Available
-                                        </c:when>
-                                        <c:otherwise>
-                                            Reserved
-                                        </c:otherwise>
-                                    </c:choose>
-                                </form>
+                                <c:choose>
+                                    <c:when test="${empty car.isAvailable || car.isAvailable}">
+                                        Available
+                                    </c:when>
+                                    <c:otherwise>
+                                        Reserved
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
                                 <td class="col-md-1 col-lg-1">

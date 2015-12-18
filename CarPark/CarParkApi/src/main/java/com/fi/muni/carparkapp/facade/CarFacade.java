@@ -58,4 +58,5 @@ public interface CarFacade {
      */
     public CarDTO getCarById(Long id);
     
+    public boolean isAvailable(CarDTO c);
 }
