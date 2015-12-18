@@ -4,12 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <my:pagetemplate title="Cars">
     <jsp:attribute name="body">
            
         <div class="panel panel-default">
-            <div class="panel-heading">All carss in CarPark</div>
+            <div class="panel-heading">All cars in CarPark</div>
             <table class="table">
                 <thead>
                     <tr>
@@ -53,7 +54,7 @@
                 </tbody>
             </table>
         </div>
-           
+        
         <div class="form-group row">
             <div class="col-md-2">
                 <a href="${pageContext.request.contextPath}/car/new" class="btn btn-primary">
