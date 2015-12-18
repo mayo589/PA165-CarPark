@@ -28,4 +28,6 @@ public interface OfficeFacade {
      */
     void AddOffice(OfficeDTO office);
     
+    void updateOffice(OfficeDTO office);
+    
 }

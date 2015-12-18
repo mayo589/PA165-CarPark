@@ -41,5 +41,13 @@ public class OfficeFacadeImpl implements OfficeFacade {
         o.setAddress(office.getAddress());
         officeService.AddOffice(o);
     }
+
+    @Override
+    public void updateOffice(OfficeDTO office) {
+        Office o = new Office(office.getId());
+        o.setName(office.getName());
+        o.setAddress(office.getAddress());
+        officeService.updateOffice(o);
+    }
     
 }

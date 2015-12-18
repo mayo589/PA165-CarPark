@@ -5,38 +5,66 @@
 
 <my:pagetemplate title="New employee">
     <jsp:attribute name="body">
-        <h1>New employee</h1>
+
         <form:form method="post" action="${pageContext.request.contextPath}/employee/create"
-                   modelAttribute="employeeCreate">
-            <div>
-                <form:label path="firstName">First name:</form:label>
-                <form:input path="firstName" />
+                   modelAttribute="employeeCreate" cssClass="form-horizontal">
+
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="firstName" cssClass="col-sm-1 control-label">First name:</form:label>
+                    <div class="col-sm-4">
+                    <form:input path="firstName" class="form-control"/>
+                    <form:errors path="firstName" cssClass="help-block"/>
+                </div>
             </div>
-            <div>
-                <form:label path="lastName">Last name:</form:label>
-                <form:input path="lastName" />
+
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="lastName" cssClass="col-sm-1 control-label">Last name:</form:label>
+                    <div class="col-sm-4">
+                    <form:input path="lastName" class="form-control"/>
+                    <form:errors path="lastName" cssClass="help-block"/>
+                </div>
             </div>
-            <div>
-                <form:label path="dateOfBirth">Date of birth:</form:label>
-                <form:input path="dateOfBirth" />
+                
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="dateOfBirth" cssClass="col-sm-1 control-label">Date of birth:</form:label>
+                    <div class="col-sm-4">
+                    <form:input path="dateOfBirth" class="form-control"/>
+                    <form:errors path="dateOfBirth" cssClass="help-block"/>
+                </div>
             </div>
-            <div>
-                <form:label path="address">Address:</form:label>
-                <form:input path="address" />
+                
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="address" cssClass="col-sm-1 control-label">Address:</form:label>
+                    <div class="col-sm-4">
+                    <form:input path="address" class="form-control"/>
+                    <form:errors path="address" cssClass="help-block"/>
+                </div>
             </div>
-            <div>
-                <form:label path="telephone">Telephone:</form:label>
-                <form:input path="telephone" />
+                
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="telephone" cssClass="col-sm-1 control-label">Telephone:</form:label>
+                    <div class="col-sm-4">
+                    <form:input path="telephone" class="form-control"/>
+                    <form:errors path="telephone" cssClass="help-block"/>
+                </div>
             </div>
-            <div>
-                <form:label path="admin">Admin:</form:label>
-                <form:checkbox path="admin" />
+
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="admin" cssClass="col-sm-1 control-label">Admin:</form:label>
+                    <div class="col-sm-4">
+                    <form:checkbox path="admin" class="form-control"/>
+                    <form:errors path="admin" cssClass="help-block"/>
+                </div>
+            </div>    
+                
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="passwordHash" cssClass="col-sm-1 control-label">Password:</form:label>
+                    <div class="col-sm-4">
+                    <form:password path="passwordHash" class="form-control"/>
+                    <form:errors path="passwordHash" cssClass="help-block"/>
+                </div>
             </div>
-            <div>
-                <form:label path="passwordHash">Password:</form:label>
-                <form:input path="passwordHash" />
-            </div>
-            
+
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <button type="submit">Create</button>
         </form:form>

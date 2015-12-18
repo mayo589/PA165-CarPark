@@ -17,4 +17,6 @@ public interface OfficeService {
     
     void AddOffice(Office office);
     
+    void updateOffice(Office office);
+    
 }

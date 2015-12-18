@@ -45,7 +45,7 @@ public class CarController {
             for (FieldError fe : bindingResult.getFieldErrors()) {
                 model.addAttribute(fe.getField() + "_error", true);
             }
-            return "car/update/{id}";
+            return "redirect:" + uriBuilder.path("/car/update/{id}").build().toUriString(); 
         };
         formBean.setId(id);
         carFacade.updateCar(formBean);

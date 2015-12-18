@@ -72,7 +72,7 @@ public class EmployeeController {
             for (FieldError fe : bindingResult.getFieldErrors()) {
                 model.addAttribute(fe.getField() + "_error", true);
             }
-            return "employee/update/{id}";
+            return "redirect:" + uriBuilder.path("/employee/update/{id}").build().toUriString(); 
         };
         formBean.setId(id);
         employeeFacade.updateEmployee(formBean);

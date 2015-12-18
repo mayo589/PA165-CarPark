@@ -14,4 +14,5 @@ public interface OfficeDao {
     public Office findByAddress(String address);
     public void create(Office o);
     public void delete(Office o);
+    public void update(Office o);
 }

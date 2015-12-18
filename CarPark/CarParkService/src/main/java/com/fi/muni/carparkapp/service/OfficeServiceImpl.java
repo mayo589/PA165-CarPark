@@ -30,5 +30,10 @@ public class OfficeServiceImpl implements OfficeService {
     public void AddOffice(Office office) {
         officeDao.create(office);
     }
+
+    @Override
+    public void updateOffice(Office office) {
+        officeDao.update(office);
+    }
     
 }
