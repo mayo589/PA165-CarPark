@@ -26,6 +26,33 @@
                 </div>
             </div>
                 
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="id" cssClass="col-sm-1 control-label">Car:</form:label>
+                <div class="col-sm-4">   
+                    <form:select id="car" path="id" name="car">
+                         <form:options items="${availableCars}" itemValue="id" itemLabel="model"/>
+                    </form:select>
+                </div>
+            </div>
+                
+           <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="id" cssClass="col-sm-1 control-label">Office:</form:label>
+                <div class="col-sm-4">   
+                    <form:select id="officeId" path="id" name="officeId">
+                         <form:options items="${offices}" itemValue="id" itemLabel="name"/>
+                    </form:select>
+                </div>
+            </div>
+                
+            <div class="form-group ${isbn_error?'has-error':''}">
+                <form:label path="id" cssClass="col-sm-1 control-label">Employee:</form:label>
+                <div class="col-sm-4">   
+                    <form:select id="employeeId" path="id" name="employeeId">
+                         <form:options items="${employees}" itemValue="id" itemLabel="lastName"/>
+                    </form:select>
+                </div>
+            </div>
+                
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <fmt:parseDate value="${item.date}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
             <a href="${pageContext.request.contextPath}/reservation/list" class="btn btn-danger">Back</a>

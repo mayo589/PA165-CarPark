@@ -5,17 +5,31 @@
  */
 package com.fi.muni.carparkweb.controllers;
 
+import com.fi.muni.carparkapp.dto.CarDTO;
+import com.fi.muni.carparkapp.dto.EmployeeDTO;
+import com.fi.muni.carparkapp.dto.OfficeDTO;
 import com.fi.muni.carparkapp.dto.ReservationDTO;
+import com.fi.muni.carparkapp.entity.Car;
+import com.fi.muni.carparkapp.facade.CarFacade;
+import com.fi.muni.carparkapp.facade.EmployeeFacade;
+import com.fi.muni.carparkapp.facade.OfficeFacade;
 import com.fi.muni.carparkapp.facade.ReservationFacade;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -30,6 +44,15 @@ public class ReservationController {
     
     @Autowired
     private ReservationFacade reservationFacade;
+    
+     @Autowired
+    private EmployeeFacade employeeFacade; 
+     
+     @Autowired
+    private CarFacade carFacade;
+    
+    @Autowired
+    private OfficeFacade officeFacade;
     
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
@@ -55,15 +78,45 @@ public class ReservationController {
         return "reservation/new";
     }
     
+    @ModelAttribute("availableCars")
+    public List<CarDTO> carsList(){
+        return carFacade.getAllAvailableCars();
+    }
+    
+    @ModelAttribute("offices")
+    public List<OfficeDTO> officesList(){
+        return (List)officeFacade.getAllOffices();
+    }
+    
+    
+    @ModelAttribute("employees")
+    public List<EmployeeDTO> employeesList(){
+        return (List)employeeFacade.getAllEmployees();
+    }
+  
+    
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createOffice(@Valid @ModelAttribute("reservationCreate") ReservationDTO formBean,
+            @RequestParam String carId, 
+             /*@ModelAttribute("carId") Long carId,
+             @ModelAttribute("employeeId") Long employeeId,
+             @ModelAttribute("officeId") Long officeId,*/
             BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes,
             UriComponentsBuilder uriBuilder) {
         if (bindingResult.hasErrors()) {
             return "reservation/new";
         }
+
+        formBean.setCar(carFacade.getCarById(Long.parseLong(carId, 10)));
+       // formBean.setEmployee(employeeFacade.findEmployeeById(employeeId));
+      //  formBean.setOffice(officeFacade.findOfficeById(officeId));
         reservationFacade.addReservation(formBean);
         return "redirect:" + uriBuilder.path("/reservation/list").build().toUriString();
     }
     
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+    }
 }
